@@ -12,5 +12,10 @@ Route::namespace('Frontend')->group(function (){
 		{
 			return view('frontend.about');
 		});
-	Route::get('shop', 'ShopController@index');
+	Route::get('shop', 'ShopController@index')->name('shop');
+});
+
+Route::namespace('Frontend')->prefix('product')->group(function(){
+	Route::get('/', 'ProductController@index');
+	Route::get('{slug}', 'ProductController@show');
 });

@@ -8,4 +8,9 @@ class Product extends Model
 {
     //
     protected $table = 'products';
+
+    public function rating()
+    {
+    	return false;
+    }
 }
