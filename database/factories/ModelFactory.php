@@ -50,6 +50,7 @@ $factory->define(App\Models\Frontend\Product::class, function (Faker\Generator $
 		'is_homepage' => $faker->boolean(2),
 		'user_id' => 1,
 		'active' => TRUE,
+		'stock' => 10,
     ];
 });
 

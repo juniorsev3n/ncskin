@@ -11,6 +11,6 @@ class Product extends Model
 
     public function rating()
     {
-    	return false;
+    	return $this->hasMany(\App\Models\Frontend\Rating::class,'id', 'rating_id');
     }
 }

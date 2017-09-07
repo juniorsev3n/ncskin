@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->boolean('is_homepage')->default(0);
             $table->integer('user_id')->unsigned();
             $table->boolean('active')->default(0);
+            $table->integer('stock');
             $table->timestamps();
         });
     }

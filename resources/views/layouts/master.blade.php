@@ -17,23 +17,23 @@
 
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,700' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script src="{{ url('js/jquery-1.11.0.min.js') }}"></script>
+    <script src="{{ url('js/jquery-migrate-1.2.1.js') }}"></script>
 
-    <link rel="stylesheet" href="css/slider1.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/prettyPhoto.css">
-	<link rel="stylesheet" href="css/dataslider.css">
-	<link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/chosen.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ url('css/slider1.css') }}">
+	<link rel="stylesheet" href="{{ url('css/style.css') }}">
+	<link rel="stylesheet" href="{{ url('css/animate.min') }}.css">
+	<link rel="stylesheet" href="{{ url('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url('css/style.css') }}">
+	<link rel="stylesheet" href="{{ url('css/prettyPhoto.css') }}">
+	<link rel="stylesheet" href="{{ url('css/dataslider.css') }}">
+	<link rel="stylesheet" href="{{ url('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url('css/chosen.css') }}">
+	<link rel="stylesheet" href="{{ url('css/style.css') }}">
+	<link rel="stylesheet" href="{{ url('css/responsive.css') }}">
 
     <style type="text/css">
         .md-button,
@@ -102,9 +102,9 @@
 	                    <div class="login-menu-holder ic-sm-user">
 	                            @if($user = Sentinel::check())
 	                            Welcome, Test!
-	                            <a href="logout">Logout</a>
+	                            <a href="{{ url('logout') }}">Logout</a>
 	                            @else
-	                            <a href="login">Login or Register</a>
+	                            <a href="{{ url('login') }}">Login or Register</a>
 	                            @endif
 	                    </div>
 	                    <div class="hotline-holder ic-sm-phone">
@@ -115,14 +115,14 @@
 	                <div class="top-logo-holder col-sm-4 col-xs-12">
 
 	                    <div class="top-logo">
-	                      <a href="/"><img src="images/logo-big.png" alt="" class="logo"></a>
+	                      <a href="{{ url('/') }}"><img src="{{ url('images/logo-big.png') }}" alt="" class="logo"></a>
 	                    </div>
 
 	                </div>
 	                <div class="col-sm-4 col-xs-12">
 	                    <div class="wish-cart-holder">
 	                        <div class="top-cart-holder ic-sm-basket" id="mini-cart">
-	                            <a href="/cart">shopping cart</a>:
+	                            <a href="{{ url('cart') }}">shopping cart</a>:
 								<span class="top-cart-price">IDR 0</span>
 								<div class="total-buble">
 								    <span>0</span>
@@ -132,7 +132,7 @@
 								    <ul class="basket-items ">
 									    <li class="row">
 									        <div class="thumb col-xs-3">
-									            <img width="45" height="45" alt="" src="images/products/product03.jpg" />
+									            <img width="45" height="45" alt="" src="{{ url('images/products/product03.jpg') }}" />
 									        </div>
 									        <div class="body col-xs-9">
 									            <h5>item.product.name</h5>
@@ -381,19 +381,19 @@
 		    <div class="footer-payment-icons">
 		        <ul class="list-inline">
 		            <li>
-		              <img  alt="paypal" src="images/payments-paypal.png" />
+		              <img  alt="paypal" src="{{ url('images/payments-paypal.png') }}" />
 		            </li>
 		            <li>
-		              <img alt="visa" src="images/payments-visa.png" />
+		              <img alt="visa" src="{{ url('images/payments-visa.png') }}" />
 		            </li>
 		            <li>
-		              <img alt="master card" src="images/payments-mastercard.png" />
+		              <img alt="master card" src="{{ url('images/payments-mastercard.png') }}" />
 		            </li>
 		            <li>
-		              <img alt="discover" src="images/payments-discover.png" />
+		              <img alt="discover" src="{{ url('images/payments-discover.png') }}" />
 		            </li>
 		            <li>
-		              <img alt="amex" src="images/payments-amex.png" />
+		              <img alt="amex" src="{{ url('images/payments-amex.png') }}" />
 		            </li>
 		        </ul>
 		        <div class="powered pull-right">Powered by <a href="http://www.lemonstand.com">LemonStand</a></div>
@@ -403,47 +403,47 @@
     
     </div>
     
-    <script src="css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ url('css/bootstrap/js/bootstrap.min.js') }}"></script>
 
-	    <script type="text/javascript" src="js/css_browser_selector.js"></script>
-		<script type="text/javascript" src="js/chosen.jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-		<script type="text/javascript" src="js/jquery.easing-1.3.js"></script>
-		<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
-		<script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+	    <script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.flexslider-min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>
 
 	    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-		<script type="text/javascript" src="js/chosen.jquery.min.js"></script>
-		<script type="text/javascript" src="js/gmap3.min.js"></script>
-		<script type="text/javascript" src="js/css_browser_selector.js"></script>
-		<script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
-		<script type="text/javascript" src="js/jquery.easing-1.3.js"></script>
-		<script type="text/javascript" src="js/bootstrap-slider.js"></script>
-		<script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/gmap3.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.raty.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/bootstrap-slider.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>
 
-	    <script type="text/javascript" src="js/css_browser_selector.js"></script>
-		<script type="text/javascript" src="js/chosen.jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-		<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
-		<script type="text/javascript" src="js/jquery.easing-1.3.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap-slider.js"></script> <!-- shop & category -->
-		<script type="text/javascript" src="js/chosen.jquery.min.js"></script> <!-- cart -->
-		<script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+	    <script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.prettyPhoto.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.raty.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/bootstrap-slider.js') }}"></script> <!-- shop & category -->
+		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script> <!-- cart -->
+		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>
 
-	    <script type="text/javascript" src="js/gmap3.min.js"></script>
-		<script type="text/javascript" src="js/chosen.jquery.min.js"></script>
-		<script type="text/javascript" src="js/css_browser_selector.js"></script>
-		<script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-		<script type="text/javascript" src="js/jquery.raty.min.js"></script>
-		<script type="text/javascript" src="js/jquery.easing-1.3.js"></script>
-		<script type="text/javascript" src="js/bootstrap-slider.js"></script>
-		<script type="text/javascript" src="js/jquery.icheck.min.js"></script>
-		<script type="text/javascript" src="js/jquery.creditCardValidator.js"></script>
-		<script type="text/javascript" src="js/jquery.lazyload.min.js"></script>    
+	    <script type="text/javascript" src="{{ url('js/gmap3.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.raty.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/bootstrap-slider.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.icheck.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.creditCardValidator.js') }}"></script>
+		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>    
 
-	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="{{ url('js/script.js') }}"></script>
     
 </body>
 </html>
