@@ -406,42 +406,21 @@
     <script src="{{ url('css/bootstrap/js/bootstrap.min.js') }}"></script>
 
 	    <script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.flexslider-min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>
 
 	    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/gmap3.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.raty.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/bootstrap-slider.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>
 
-	    <script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.prettyPhoto.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.raty.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/bootstrap-slider.js') }}"></script> <!-- shop & category -->
-		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script> <!-- cart -->
-		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>
 
-	    <script type="text/javascript" src="{{ url('js/gmap3.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/chosen.jquery.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.raty.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.easing-1.3.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/bootstrap-slider.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.icheck.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.creditCardValidator.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.lazyload.min.js') }}"></script>    
+		<script type="text/javascript" src="{{ url('js/jquery.creditCardValidator.js') }}"></script>  
 
 	<script type="text/javascript" src="{{ url('js/script.js') }}"></script>
     

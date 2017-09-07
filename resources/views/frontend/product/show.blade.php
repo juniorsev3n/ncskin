@@ -208,10 +208,10 @@
                             {% endif %}
 
                                 <div class="price">
-                                    {% if on_sale %}
+                                    @if ($product->discount > 0)
                                         <span class="previous-price">{{ $product->price }}</span>
-                                    {% endif %}
-                                    <span  itemprop="price">{{ $product->price }}</span>
+                                    @endif
+                                    <span  itemprop="price">{{ $product->price - ($product->price * $product->discount) }}</span>
                                     <meta itemprop="currency" content="USD" />
                                 </div>
                                 @if(!empty($product->description))
