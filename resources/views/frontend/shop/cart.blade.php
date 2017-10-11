@@ -104,10 +104,10 @@
 
                      @if (\Auth::check()) 
                         <a class="md-button large col-xs-12" href=" url('/checkout') ">Checkout</a>
-                            <a href=" url('shop') ">continue shopping</a>
+                            <a href="{{ url('shop') }}">continue shopping</a>
                      @else 
                         <a class="md-button large col-xs-12" href=" url('/checkout-start') ">Checkout</a>
-                            <a href=" url('shop') ">continue shopping</a>
+                            <a href="{{ url('shop') }}">continue shopping</a>
                      @endif 
 
                  @endif
