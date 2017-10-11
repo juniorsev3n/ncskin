@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Frontend\Product;
 use App\Models\Frontend\Category;
+use Cart;
 
 
 class ShopController extends Controller
@@ -22,4 +23,22 @@ class ShopController extends Controller
 
     	return view('frontend.shop', compact('products','categories'));
     }
+
+    public function addToCart($details = [])
+    {
+        $cart = Cart::add($details);
+        return $cart;
+    }
+
+    public function total()
+    {
+        return Cart::total();
+    }
+
+    public function getCart()
+    {
+        $cart = Cart::content();
+        return view('frontend.shop.cart', compact('cart'));
+    }
+
 }

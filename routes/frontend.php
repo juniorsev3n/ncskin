@@ -15,6 +15,7 @@ Route::namespace('Frontend')->group(function (){
 			return view('frontend.about');
 		});
 	Route::get('shop', 'ShopController@index')->name('shop');
+	Route::get('cart', 'ShopController@getCart')->name('cart');
 });
 
 Route::namespace('Frontend')->prefix('product')->group(function(){
