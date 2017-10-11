@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', '')
+@section('title', 'Welcome')
 @section('content')
 
 <section class="section-home-banner">
@@ -26,7 +26,7 @@
 		        </div>
 
 		        <div class="tab-tag-line uppercase bold">
-		            we have over 2000 products in our shop
+		            we have over 200 products in our shop
 		        </div>
 
 		        <div class="tab-content product-grid no-move-down">
@@ -100,7 +100,7 @@
 									        </div>
 									    <hr>
 									    <div class="title uppercase bold">
-									        <a href="/product/product.url_name">product.name</a>
+									        <a href="/product/product.url_name">name</a>
 									    </div>
 									    <div class="price">
 									            <span class="previous-price">IDR 0</span>
@@ -146,76 +146,10 @@
 									    </div>
 									</div>
 									</form>
-						        </div>
-						        <div class="col-lg-offset-0 col-lg-3 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-2 product-holder">
-									<form class="custom" onsubmit="return false">
-									<div class="product-item text-center">
-									        <a href="#next" class="mini-next"></a>
-									        <a href="#prev" class="mini-prev"></a>
-									        <div class="image ">
-									            <div class="product-mini-gallery">
-									                <a style="display:inline-block;" href="/product/product.url_name">
-									                    <img alt="product.name" src="images/products/product01.jpg" width="212" height="281" />
-									                </a>
-									                <a style="display:inline-block;" href="/product/product.url_name">
-									                    <img alt="product.name" src="images/products/product02.jpg" width="212" height="281" />
-									                </a>
-									            </div>
-									        </div>
-									    <hr>
-									    <div class="title uppercase bold">
-									        <a href="/product/product.url_name">product.name</a>
-									    </div>
-									    <div class="price">
-									            <span class="previous-price">IDR 0</span>
-									        <span>IDR 1</span>
-									    </div>
-									    <div class="buttons-holder">
-									        <div class="add-cart-holder">
-									            <input type="hidden" name="productId" value="product.id }}"/>
-									            <a class="md-button" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product">Add to Cart</a>
-									        </div>
-									    </div>
-									</div>
-									</form>
-						        </div>
-						        <div class="col-lg-offset-0 col-lg-3 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-2 product-holder">
-									<form class="custom" onsubmit="return false">
-									<div class="product-item text-center">
-									        <a href="#next" class="mini-next"></a>
-									        <a href="#prev" class="mini-prev"></a>
-									        <div class="image ">
-									            <div class="product-mini-gallery">
-									                <a style="display:inline-block;" href="/product/product.url_name">
-									                    <img alt="product.name" src="images/products/product01.jpg" width="212" height="281" />
-									                </a>
-									                <a style="display:inline-block;" href="/product/product.url_name">
-									                    <img alt="product.name" src="images/products/product02.jpg" width="212" height="281" />
-									                </a>
-									            </div>
-									        </div>
-									    <hr>
-									    <div class="title uppercase bold">
-									        <a href="/product/product.url_name">product.name</a>
-									    </div>
-									    <div class="price">
-									            <span class="previous-price">IDR 0</span>
-									        <span>IDR 1</span>
-									    </div>
-									    <div class="buttons-holder">
-									        <div class="add-cart-holder">
-									            <input type="hidden" name="productId" value="product.id }}"/>
-									            <a class="md-button" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product">Add to Cart</a>
-									        </div>
-									    </div>
-									</div>
-									</form>
-						        </div>
+						        </div>	        
 		                </div>
 		            </div>
 		        </div>
-
 		    </div>
 		</section>
-
 @endsection

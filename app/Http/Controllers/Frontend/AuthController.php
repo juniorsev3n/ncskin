@@ -19,7 +19,7 @@ class AuthController extends Controller
 {
 
     /**
-     * Create a new Backend\AuthController instance.
+     * Create a new Frontend\AuthController instance.
      *
      * @return void
      */
@@ -111,46 +111,38 @@ class AuthController extends Controller
      */
     public function postResetPassword(Request $request)
     {
-        $param = $request->all();
-        $rules = array(
+        $this->validate($request,
+                [
                 'email'   => 'required|email',
-            );
-        $validate = Validator::make($param,$rules);
-
-        if($validate->fails()) {
-            return redirect()->route('admin-reset-password')->withInput()->withErrors($validate->messages());
-        } else {
-            $findUser = Sentinel::findByCredentials(['login' => $request->input('email')]);
-            if (! $findUser) {
-                flash()->error(trans('label.failed-reset'));
-                return redirect()->route('admin-reset-password')->withInput();
-            }
-            if (Reminder::exists($findUser)) {
-                $reminder = Reminder::exists($findUser);
-                $reminder->delete();
-
-            }
-            $reminder = Reminder::create($findUser);
-            $data_email = array('id'=>$findUser->id,
-                                'email'=> $findUser->email, //env('MAIL_TO', $findUser->email),
-                                'username'=>$findUser->username,
-                                'subject_email'=>trans('label.reset_password'),
-                                'activation_code'=>$reminder->code,
-                                'url'=>route('link-reset-password', [$findUser->id, $reminder->code])
-                                );
-            $template = 'email.reset_password';
-            $email = New Email;
-            $email->sendEmail($template, $data_email);
-            flash()->success(trans('label.success-reset'));
-            return redirect()->route('admin-login');
+                ]);
+        $findUser = Sentinel::findByCredentials(['login' => $request->input('email')]);
+        if (! $findUser) {
+            return redirect('password-reset')->with('error','Gagal reset password');
         }
+        if (Reminder::exists($findUser)) {
+            $reminder = Reminder::exists($findUser);
+            $reminder->delete();
+
+        }
+        $reminder = Reminder::create($findUser);
+        $data_email = array('id'=>$findUser->id,
+                            'email'=> $findUser->email,
+                            'username'=>$findUser->username,
+                            'subject_email'=>'Reset Password',
+                            'activation_code'=>$reminder->code,
+                            'url'=>route('password-reset', [$findUser->id, $reminder->code])
+                            );
+        $template = 'email.reset_password';
+        $email = New Email;
+        $email->sendEmail($template, $data_email);
+        return redirect('login')->with('errror', 'Password telah berhasil di reset');
     }
 
     public function sendEmailResetPassword($data)
     {
         $mail = Mail::queue('email.reset_password', $data,
             function($message) use($data) {
-                $message->from('no-reply@digitalplus.com', 'no-reply@digitalplus.com');
+                $message->from('', '');
                 $message->to($data['email'], $data['email'])->subject($data['subject_email']);
             });
     }
@@ -163,7 +155,7 @@ class AuthController extends Controller
     */
     public function verifyResetPassword($id,$code)
     {
-        $checkCode = $this->model->verifyCodeResetPassword($id,$code);
+        $checkCode = User::verifyCodeResetPassword($id,$code);
         if ($checkCode['code'] == 200) {
             $data['id'] = $id;
             $data['code'] = $code;
@@ -172,10 +164,9 @@ class AuthController extends Controller
                 'id' => 'form-forgot',
                 'autocomplete' => 'off',
             ];
-            return view('admin.auth.reset', $data);
+            return view('frontend.auth.reset', $data);
         } else {
-            flash()->error(trans('label.request-expired'));
-            return redirect()->route('admin-login');
+            return redirect('login')->with('error', 'Login request has expired');
         }
 
     }
@@ -190,8 +181,7 @@ class AuthController extends Controller
     {
         $user = Sentinel::findById($request->input('id'));
         Reminder::complete($user, $request->input('code'), $request->input('password'));
-        flash()->success(trans('label.success-change-password'));
-        return redirect()->route('admin-login');
+        return redirect('login')->with('error', 'password telah berhasil diubah');
     }
 }
 
