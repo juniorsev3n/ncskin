@@ -2,8 +2,10 @@
 
 Route::namespace('Frontend')->group(function (){
 	
-	Route::get('login', 'LoginController@index');
-	Route::post('login', 'LoginController@postLogin');
+	Route::get('login', 'AuthController@index');
+	Route::post('login', 'AuthController@postLogin');
+	Route::get('logout', 'AuthController@getLogout');
+	Route::get('password-reset', 'AuthController@getResetPassword');
 	Route::get('contact', function()
 		{
 			return view('frontend.contact');
