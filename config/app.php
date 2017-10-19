@@ -179,7 +179,9 @@ return [
 
 
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
     ],
 
     /*

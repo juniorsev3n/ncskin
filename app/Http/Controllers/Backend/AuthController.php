@@ -40,4 +40,10 @@ class AuthController extends Controller
         }
         return redirect('admin/login')->withErrors('Email atau Password salah');
     }
+
+    public function getLogout()
+    {
+        Sentinel::logout();
+        return redirect('admin/login');
+    }
 }

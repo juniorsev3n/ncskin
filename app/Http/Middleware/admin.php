@@ -17,7 +17,7 @@ class admin
     public function handle($request, Closure $next)
     {   
         $user = Sentinel::getUser();
-        if($user->is_admin == 1)
+        if($user && $user->is_admin == 1)
         {    
             return $next($request);
         }

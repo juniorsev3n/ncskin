@@ -9,7 +9,9 @@
         "cartalyst/sentinel": "2.0.*",
         "gloudemans/shoppingcart": "^2.4",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "renatomarinho/laravel-page-speed": "^1.8",
+        "yajra/laravel-datatables-oracle": "^7.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

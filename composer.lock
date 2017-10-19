@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6cf8ab3c313cf644ab9f3002485d9cc",
-    "content-hash": "2e7caffd16442b45f06f8fb68dd86471",
+    "hash": "99e64b0f70b11d7e5e28b10b2ae31dc3",
+    "content-hash": "6cfc3a1b2fab817e9e4262f945c1e8cc",
     "packages": [
         {
             "name": "cartalyst/sentinel",
@@ -1175,6 +1175,62 @@
             "time": "2017-08-04 13:39:04"
         },
         {
+            "name": "renatomarinho/laravel-page-speed",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/renatomarinho/laravel-page-speed.git",
+                "reference": "8b9682283fbc519b2db04d1944809d15dfe7f130"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/renatomarinho/laravel-page-speed/zipball/8b9682283fbc519b2db04d1944809d15dfe7f130",
+                "reference": "8b9682283fbc519b2db04d1944809d15dfe7f130",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.3.* || 5.4.* || 5.5.*",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.2",
+                "phpunit/phpunit": "^5.7 || ^6.0",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RenatoMarinho\\LaravelPageSpeed\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "RenatoMarinho\\LaravelPageSpeed\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Renato Marinho",
+                    "email": "renato.marinho@s2move.com"
+                }
+            ],
+            "description": "Laravel Page Speed",
+            "keywords": [
+                "html",
+                "laravel",
+                "minify",
+                "optmize",
+                "page speed"
+            ],
+            "time": "2017-10-18 01:22:43"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.8",
             "source": {
@@ -2071,6 +2127,67 @@
                 "environment"
             ],
             "time": "2016-09-01 10:05:43"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v7.10.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "8e217bf1be307c8e7e52fa6a5071b985568bc04c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/8e217bf1be307c8e7e52fa6a5071b985568bc04c",
+                "reference": "8e217bf1be307c8e7e52fa6a5071b985568bc04c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.4.*",
+                "illuminate/filesystem": "5.4.*",
+                "illuminate/http": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "illuminate/view": "5.4.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "^3.4",
+                "phpunit/phpunit": "~5.7"
+            },
+            "suggest": {
+                "league/fractal": "Transform your api response into something you won't hate.",
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTable.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTable."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "7.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\Datatables\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 4|5",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "time": "2017-08-31 01:27:45"
         }
     ],
     "packages-dev": [
