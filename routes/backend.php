@@ -24,5 +24,9 @@ Route::namespace('Backend')->prefix('admin')->group(function (){
 
 		Route::get('user', 'UserController@index');
 		Route::get('user/data', 'UserController@getData');
+
+
+		Route::get('menu', 'MenuController@index');
+		Route::get('menu/data', 'MenuController@getData');
 	});
 });
