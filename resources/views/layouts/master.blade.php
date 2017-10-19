@@ -154,34 +154,42 @@
 	                </div>
 	            </div>
 	        </section>
-
 	        <div class="top-menu visible-md visible-lg">
 			    <ul>
-			      <li class="">
-			        <a href="/">Home</a>
-			      </li>
-			      <li class="dropdown">
-			        <a class="dropdown-toggle" id="dropdownMenu1" href="/shop">Shop</a>
-			          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-			                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/category/">name</a></li>
-			          </ul>
-			      </li>
-			    </ul>
-			    <ul>
-				  <li class="">
-				    <a href="/about">About</a>
-				  </li>
-				  <li class="">
-				    <a href="/contact">Contact</a>
-				  </li>
-				</ul>
-			    <ul>
+			      	<li><a href="{{ url('/')}}">HOME</a></li>
+                    @php
+                        $parent_menu = \App\Models\Menu::getParentMenus();
+                    @endphp
+                        @foreach($parent_menu as $parent)
+                            @php 
+                            	$child_menu = \App\Models\Menu::getChildMenus($parent->id);
+                            @endphp
+                            @if(count($child_menu) > 0)
+                                <li id="{{ $parent->path }}-navigation">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ strtoupper($parent->title)}}
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        @foreach($child_menu as $key=>$child)
+                                        <li><a href="{{ url('/'.$child->path) }}">{{$child->title}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="{{$parent->path}}-navigation" id="{{$parent->path}}-navigation">
+                                <a href="{{ url('/'.$parent->path) }}">{{ strtoupper($parent->title) }}</a></li>
+                            @endif
+                        @endforeach
 			        @if($user = Sentinel::check())
-			        <li class="active">
+			        <li>
 			           <a href="orders">My Orders</a>
 			        </li>
 			        <li>
 			           <a href="profile">My Profile</a>
+			        </li>
+			        @else
+			        <li>
+			        	<a href="{{ url('login') }}">Login</a>
 			        </li>
 			        @endif
 			    </ul>
@@ -189,26 +197,39 @@
 
 
 			<select class="top-drop-menu  visible-sm visible-xs">
-			    <option value="/">
+			    <option value="{{ url('/') }}">
 			        Home
 			    </option>
-			    <option value="shop">
-			        Shop
-			    </option>
+			    @php
+                        $parent_menu = \App\Models\Menu::getParentMenus();
+                    @endphp
+                        @foreach($parent_menu as $parent)
+                            @php 
+                            	$child_menu = \App\Models\Menu::getChildMenus($parent->id);
+                            @endphp
+                            @if(count($child_menu) > 0)
+                                <li id="{{ $parent->path }}-navigation">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ strtoupper($parent->title)}}
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        @foreach($child_menu as $key=>$child)
+                                        <li><a href="{{ url('/'.$child->path) }}">{{$child->title}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <option value=""{{ url('/'.$parent->path) }}">{{ strtoupper($parent->title) }}</option>
+                            @endif
+                        @endforeach
 			    	@if($user = Sentinel::check())
-			        <option value="orders">
+			        <option value="{{ url('orders') }}">
 			            My Orders
 			        </option>
-			        <option value="profile">
+			        <option value="{{ url('profile') }}">
 			            My Profile
 			        </option>
 			        @endif
-			    <option value="about">
-			        About
-			    </option>
-			    <option value="contact">
-			        Contact
-			    </option>
 			</select>
 	    </div>
 	</header>

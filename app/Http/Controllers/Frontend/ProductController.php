@@ -21,6 +21,11 @@ class ProductController extends Controller
 
         $reviews = Review::where('product_id', $product->id)
                          ->get();
-    	return view('frontend.product.show', compact('product', 'reviews'));
+
+        $related = Product::where('category_id', $product->category_id)
+                            ->where('active', true)
+                            ->take(1)
+                            ->get();
+    	return view('frontend.product.show', compact('product', 'reviews', 'related'));
     }
 }

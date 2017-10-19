@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-	$products = \App\Models\Frontend\Product::where('is_homepage', TRUE)
+	$products = \App\Models\Product::where('is_homepage', TRUE)
 											 ->where('active', TRUE) 
 											 ->orderBy('created_at', 'DESC')
 											 ->take(8)

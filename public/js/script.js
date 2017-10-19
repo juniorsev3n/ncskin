@@ -11,6 +11,9 @@ $(window).bind("load", function() {
 
 $(window).load(function() {
 
+    $(".md-button addtocart").click(function(event) {
+        console.log('test');
+    });
     //SinglePage slide activator
     if ($('.section-single-product-page').length > 0) {
         var singlePSlider = $(".single-product-slider").carouFredSel({
