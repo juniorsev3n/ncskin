@@ -1,6 +1,6 @@
 @extends('backend.master')
 
-@section('title', 'Product')
+@section('title', 'User')
 @section('content')
 	<section>
 		<div class="row">

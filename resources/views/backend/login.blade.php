@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ url('css/font-awesome.min.css') }}">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ url('css/ionicons.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('css/AdminLTE.min.css') }}">
   <!-- iCheck -->
@@ -64,26 +62,14 @@
       </div>
     </form>
 
-    <a href="#">I forgot my password</a><br>
+    <a href="{{ url('reset-password') }}">I forgot my password</a><br>
   </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-
 <!-- jQuery 3 -->
 <script src="{{ url('js/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ url('js/bootstrap.min.js') }}"></script>
-<!-- iCheck -->
-<script src="{{ url('js/icheck.min.js') }}"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
 </body>
 </html>
