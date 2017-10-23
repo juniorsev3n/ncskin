@@ -15,7 +15,7 @@
     <link rel="icon" href="" type="image/png">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,700' rel='stylesheet' type='text/css'>
-    <link href="{{ url('css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="{{ url('js/jquery-1.11.0.min.js') }}"></script>
     <script src="{{ url('js/jquery-migrate-1.2.1.js') }}"></script>
@@ -182,10 +182,10 @@
                         @endforeach
 			        @if($user = Sentinel::check())
 			        <li>
-			           <a href="orders">My Orders</a>
+			           <a href="{{ url('order') }}">My Orders</a>
 			        </li>
 			        <li>
-			           <a href="profile">My Profile</a>
+			           <a href="{{ url('profil') }}">My Profile</a>
 			        </li>
 			        @else
 			        <li>
@@ -405,7 +405,7 @@
     
     </div>
     
-    <script src="{{ url('css/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('js/bootstrap.min.js') }}"></script>
 
 	    <script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
 		<script type="text/javascript" src="{{ url('js/jquery.carouFredSel-6.2.1-packed.js') }}"></script>

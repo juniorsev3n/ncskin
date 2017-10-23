@@ -16,6 +16,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ url('css/_all-skins.min.css') }}">
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -132,17 +133,6 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Dashboard</li>
-      </ol>
-    </section>
-
     <!-- Main content -->
     @yield('content')
     
@@ -158,21 +148,38 @@
 
   
 </div>
+<!-- Modal Confirmasi Delete -->
+            <div class="modal fade" id="ConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">1
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel"><i class="fa fa-question-circle"></i> Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure, delete this data?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-flat btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-flat btn-danger btn-yes" id="yes-delete">Yes</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!-- Modal Confirmasi Delete -->
 <!-- ./wrapper -->
-
 <!-- jQuery 3 -->
 <script src="{{ url('js/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ url('js/bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ url('js/adminlte.min.js') }}"></script>
-<script src="{{ url('js/jquery-jvectormap.min.js') }}"></script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+
 <script src="{{ url('js/dashboard2.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('js/demo.js') }}"></script>
-
 @yield('js')
-
 </body>
 </html>

@@ -12,13 +12,17 @@ Route::namespace('Backend')->prefix('admin')->group(function (){
 		
 		Route::get('product', 'ProductController@index');
 		Route::get('product/data', 'ProductController@getData');
+		Route::get('product/add', 'ProductController@getAdd');
+		Route::post('product/add', 'ProductController@postAdd');
+		Route::post('product/addImage', 'ProductController@addImage');
+		Route::get('product/remove/{id}', 'ProductController@getRemove');
+		Route::get('product/show/{id}', 'ProductController@show');
 
 		
 
-
-
 		Route::get('category', 'CategoryController@index');
 		Route::get('category/data', 'CategoryController@getData');
+		Route::get('category/ajax_list', 'CategoryController@getAjaxList');
 
 
 
