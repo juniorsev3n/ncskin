@@ -62,3 +62,7 @@ Route::namespace('Frontend')->prefix('product')->group(function(){
 
 
 
+Route::get('/test', function (){
+    \Mail::to('juniorsev3n@gmail.com')
+            ->send(new \App\Mail\TestEmail);
+});

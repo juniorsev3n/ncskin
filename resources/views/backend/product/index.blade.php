@@ -45,18 +45,10 @@
                     <div class="col-md-12">
                         <div class="box box-solid bg-aqua">
                             <div class="box-footer text-black">
-                                <div class="header-info">
-                                    <div class="col-md-8">
-                                        <p class="">Images, <span class="images-modal"></span></p>
-                                        <p class="">Created Date <span class="created-date-modal"></span></p>
-                                        </div>
-                             
-                                </div>
                                 <div class="modal-body">
                                 <div class="content-detail">
-                                    <hr/>
+                                <h3>Name Product : <span class="name-content"></span></h3>
                                     <span class="content-modal"></span>
-                                    <hr/>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -101,14 +93,13 @@
                     success: function(data) {
                     $('.loader-page').fadeOut();
                         if (data) {
-                        	console.log(data);
                             $('#ProductViewModal').modal({
                                 backdrop: 'static',
                                 keyboard: false
                             });
                             $('#myModalLabel').html(data.name);
                             $('.title-modal').html(data.name);
-                            $('.url-modal').html(data.slug);
+                            $('.name-content').html(data.name);
                             $('.images-modal').html(data.images);
                             $('.created-date-modal').html(data.created_at);
                             $('.content-modal').html(data.description);
