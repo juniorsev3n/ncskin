@@ -18,28 +18,11 @@ use Validator;
 class AuthController extends Controller
 {
 
-    /**
-     * Create a new Frontend\AuthController instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('sentinel_guest', ['except' => 'getLogout']);
-    // }
-
     public function index()
     {
         return view('frontend.login');
     }
 
-
-    /**
-     * Admin Handle login request.
-     *
-     * @param  \App\Http\Requests\Auth\WebLoginRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function postLogin(Request $request)
     {
         $backToLogin = redirect('login')->withInput();
@@ -49,27 +32,18 @@ class AuthController extends Controller
                 'password' => 'required'
             ]);
 
-        $findUser = Sentinel::findByCredentials(['login' => $request->input('email')]);
+        $findUser = Sentinel::findByCredentials(['email' => $request->input('email')]);
         // If we can not find user based on email...
-        if (! $findUser) {
-
+        if (!$findUser)
+        {
             return $backToLogin->with('error', 'user tidak ditemukan');
         }
 
         try {
             $remember = (bool) $request->input('remember_me');
             // If password is incorrect...
-            if (! Sentinel::authenticate($request->all(), $remember)) {
+            if (!Sentinel::authenticate($request->all(), $remember)) {
                 return $backToLogin->with('error', 'password yang anda masukan salah');
-            }
-            if (strtolower(Sentinel::check()->roles[0]->slug) != 'admin' && !array_key_exists('admin', Sentinel::check()->roles[0]->permissions)) {
-                Sentinel::logout();
-                return $backToLogin->with('error', 'tidak ada akses');
-            }
-
-            if ($findUser->is_active == 0) {
-                Sentinel::logout();
-                return $backToLogin->with('error', 'user tidak aktif');
             }
 
             return redirect('dashboard');
@@ -78,19 +52,13 @@ class AuthController extends Controller
         } catch (NotActivatedException $e) {
             $error = 'Please activate your account before trying to log in.';
         }
-
         return $backToLogin->with('error', $error);
     }
 
-    /**
-     * Admin Logout.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function getLogout()
     {
         Sentinel::logout();
-        return redirect('login');
+        return redirect('/');
     }
 
     /**
@@ -115,8 +83,8 @@ class AuthController extends Controller
                 [
                 'email'   => 'required|email',
                 ]);
-        $findUser = Sentinel::findByCredentials(['login' => $request->input('email')]);
-        if (! $findUser) {
+        $findUser = Sentinel::findByCredentials(['email' => $request->input('email')]);
+        if (!$findUser) {
             return redirect('password-reset')->with('error','Gagal reset password');
         }
         if (Reminder::exists($findUser)) {

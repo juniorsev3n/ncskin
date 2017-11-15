@@ -9,11 +9,13 @@ use Datatables;
 
 class CategoryController extends Controller
 {
-    public function index(){
+    public function index()
+    {
     	return view('backend.category.index');
     }
 
-    public function getData(){
+    public function getData()
+    {
     	$categories = Category::select(['id','name','images','description','active']);
         return Datatables::of($categories)
             ->addColumn('action', function ($categories) {

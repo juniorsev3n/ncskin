@@ -63,6 +63,37 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div class="modal fade" id="ProductEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-check-square"></i> <span class="title-modal"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="box-body row">
+                    <div class="col-md-12">
+                        <div class="box box-solid bg-aqua">
+                            <div class="box-footer text-black">
+                                <div class="modal-body">
+                                <div class="content-detail">
+                                <h3><Name Product : <input type="text" name="name" class="name-content"></h3>
+                                    <span class="content-modal"></span>
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-flat btn-primary" data-dismiss="modal"><i class="fa fa-check-square-o"></i> Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.tab-pane -->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 @endsection
 
 @section('js')
@@ -109,6 +140,30 @@
             return false;
         }
     }
-
+    function edit(id) {
+        if (id) {
+            $.ajax({
+            type: 'GET',
+                    url: '{{ url('admin/product/show') }}'+'/'+id,
+                    dataType: 'json',
+                    success: function(data) {
+                    $('.loader-page').fadeOut();
+                        if (data) {
+                            $('#ProductEditModal').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
+                            $('#myModalLabel').html(data.name);
+                            $('.title-modal').html(data.name);
+                            $('.name-content').val(data.name);
+                            $('.images-modal').html(data.images);
+                            $('.created-date-modal').html(data.created_at);
+                            $('.content-modal').html(data.description);
+                        }
+                    }
+            });
+            return false;
+        }
+    }
 </script>
 @endsection
