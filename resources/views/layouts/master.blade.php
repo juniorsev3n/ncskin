@@ -84,7 +84,6 @@
         }
     </style>
 
-
 </head>
 
 <body class="homepage3">
@@ -103,15 +102,15 @@
 	                            <a href="{{ url('login') }}">Login or Register</a>
 	                            @endif
 	                    </div>
-	                    <!--<div class="hotline-holder ic-sm-phone">
+	                    <div class="hotline-holder ic-sm-phone">
 	                        <label>hotline:</label>
-	                        <span>1-800-123-4567</span>
-	                    </div>-->
+	                        <span>62 81 111 113</span>
+	                    </div>
 	                </div>
 	                <div class="top-logo-holder col-sm-4 col-xs-12">
 
 	                    <div class="top-logo">
-	                      <a href="{{ url('/') }}"><!--<img src="{{ url('images/logo-big.png') }}" alt="" class="logo">--></a>
+	                      <a href="{{ url('/') }}"><img src="{{ url('images/logo-big.png') }}" alt="" class="logo"></a>
 	                    </div>
 
 	                </div>
@@ -128,7 +127,7 @@
 								    <ul class="basket-items ">
 									    <li class="row">
 									        <div class="thumb col-xs-3">
-									            <!--<img width="45" height="45" alt="" src="{{ url('images/products/product03.jpg') }}" />-->
+									            <img width="45" height="45" alt="" src="{{ url('images/products/product03.jpg') }}" />
 									        </div>
 									        <div class="body col-xs-9">
 									            <h5>item.product.name</h5>
@@ -195,7 +194,6 @@
 			    </ul>
 			</div>
 
-
 			<select class="top-drop-menu  visible-sm visible-xs">
 			    <option value="{{ url('/') }}">
 			        Home
@@ -245,7 +243,7 @@
 		                <div class="row">
 		                    <div class="newsletter-title col-xs-12 col-sm-4">
 		                        <h2>sign up to our newsletter</h2>
-		                        <h3>and get $30 coupon</h3>
+		                        <h3>and get IDR50.000 coupon</h3>
 		                    </div>
 
 		                    <div class=" col-xs-12 col-sm-8">
@@ -259,7 +257,7 @@
 		    </div>
 		</section>
 
-		<section class="section-banners">
+		<!--<section class="section-banners">
 		    <div class="container">
 		        <div class="col-lg-6 col-md-12">
 		            <div class="homepage-banner">
@@ -272,7 +270,7 @@
 		            </div>
 		        </div>
 		    </div>
-		</section>
+		</section>-->
 
         <section class="section-footer">
 		    <div class="footer-holder">
@@ -294,7 +292,7 @@
 		                                    <a href="" class="fa fa-twitter"></a>
 		                                </li>
 		                                <li>
-		                                    <a href="" class="fa fa-pinterest"></a>
+		                                    <a href="" class="fa fa-instagram"></a>
 		                                </li>
 		                            </ul>
 		                        </div>
@@ -312,12 +310,12 @@
 		                    <div class="content">
 								    <ul class="categories-group link-list">
 								            <li>
-								                <a href="/category/">category.name</a>
+								                <a href="/category/">categoryname 1</a>
 								            </li>
 								    </ul>
 								    <ul class="categories-group link-list sub-category">
 								            <li>
-								                <a href="/category/">category.name</a>
+								                <a href="/category/">categoryname 2</a>
 								            </li>
 								    </ul>
 		                    </div>

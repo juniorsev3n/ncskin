@@ -1,24 +1,24 @@
 <?php
 
-Route::namespace('Frontend')->group(function (){
-	
-	Route::get('login', 'AuthController@index');
-	Route::post('login', 'AuthController@postLogin');
-	Route::get('logout', 'AuthController@getLogout');
-	Route::get('password-reset', 'AuthController@getResetPassword');
-	Route::get('contact', function()
-		{
-			return view('frontend.contact');
-		});
-	Route::get('about', function()
-		{
-			return view('frontend.about');
-		});
-	Route::get('shop', 'ShopController@index')->name('shop');
-	Route::get('cart', 'ShopController@getCart')->name('cart');
+Route::group(['namespace' => 'Frontend'], function(){
+
+    Route::get('login', 'AuthController@index');
+    Route::post('login', 'AuthController@postLogin');
+    Route::get('logout', 'AuthController@getLogout');
+    Route::get('password-reset', 'AuthController@getResetPassword');
+    Route::get('contact', function()
+        {
+            return view('frontend.contact');
+        });
+    Route::get('about', function()
+        {
+            return view('frontend.about');
+        });
+    Route::get('shop', 'ShopController@index')->name('shop');
+    Route::get('cart', 'ShopController@getCart')->name('cart');
 
 
-	Route::get('/payment-confirmation', 'ClientController@paymentConfirm');
+    Route::get('/payment-confirmation', 'ClientController@paymentConfirm');
     Route::post('/payment-confirmation', 'ClientController@postPaymentConfirm');
 
 
@@ -53,16 +53,9 @@ Route::namespace('Frontend')->group(function (){
         Route::get('getinvoice/{kode}', 'PaymentController@getInvoice');
 
 
+Route::prefix('product')->group(function(){
+    Route::get('/', 'ProductController@index');
+    Route::get('{slug}', 'ProductController@show');
 });
 
-Route::namespace('Frontend')->prefix('product')->group(function(){
-	Route::get('/', 'ProductController@index');
-	Route::get('{slug}', 'ProductController@show');
-});
-
-
-
-Route::get('/test', function (){
-    \Mail::to('juniorsev3n@gmail.com')
-            ->send(new \App\Mail\TestEmail);
 });

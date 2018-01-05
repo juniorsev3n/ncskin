@@ -1,6 +1,6 @@
 <?php
 
-Route::namespace('Backend')->prefix('admin')->group(function (){
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function (){
 	
 	Route::get('login', 'AuthController@index');
 	Route::post('login', 'AuthController@postLogin');

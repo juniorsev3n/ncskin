@@ -12,28 +12,28 @@
                     @endif
                     <form action="{{ url('login') }}" method="post">
                         <h3>Login</h3>
-                        <input name="email" class="md-input col-xs-12{{ $errors->has('email') ? 'danger' : '' }}" placeholder="e-mail" value="{{ old('email') }}">
+                        <input name="email" class="md-input col-xs-12" placeholder="e-mail" value="{{ old('email') }}">
                         @if($errors->first('email'))
-                        <span>{{ $errors->first('email') }}</span>
+                        <span class="alert-danger">{{ $errors->first('email') }}</span>
                         @endif
-                        <input type="password" name="password" class="md-input col-xs-12{{ $errors->has('password') ? 'danger' : '' }}" placeholder="password">
+                        <input type="password" name="password" class="md-input col-xs-12" placeholder="password">
                         @if($errors->first('password'))
-                        <span>{{ $errors->first('password') }}</span>
+                        <span class="alert-danger">{{ $errors->first('password') }}</span><br>
                         @endif
-                        <a class=" forget-link" href="{{ url('/password-reset') }}">forgot your password?</a>
+                        <a class="forget-link" href="{{ url('/password-reset') }}">forgot your password?</a>
                         <button class="md-button narrow " type="submit">sign in</button>
                         {{ csrf_field() }}
                     </form>
                 </div>
                 <div class="col-xs-12 col-sm-6">
-                    <form data-ajax-handler="shop:onSignup" data-validation-message="" method="post">
+                    <form action="{{ url('register') }}" method="post">
                         <h3>Register</h3>
                         
                         <input name="firstname" type="text" class="md-input col-xs-12" placeholder="First Name *" />
 
                         <input name="lastname" type="text" class="md-input col-xs-12"  placeholder="Last Name *"/>
                         
-                        <input id="email" type="text" name="signup[email]" class="md-input col-xs-12"  placeholder="Email *"/>
+                        <input id="email" type="text" name="email" class="md-input col-xs-12"  placeholder="Email *"/>
                         
                         <input name="password" type="password" class="md-input col-xs-12"  placeholder="Password *"/>
                         
