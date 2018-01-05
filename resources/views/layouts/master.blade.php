@@ -5,11 +5,11 @@
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>@yield('title') | Ecommerce</title>
+    <title>@yield('title') | NeuCome Skin Beauty</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="Description" content="@yield('description')"/>
-    <meta name="Keywords" content="@yield('keywords')"/>
+    <meta name="Description" content="@yield('description') NeuCome Skin Beauty"/>
+    <meta name="Keywords" content="@yield('keywords') neucome, skincare, beauty"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="" type="image/png">
     <link rel="icon" href="" type="image/png">
