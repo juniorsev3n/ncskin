@@ -11,7 +11,7 @@ class Product extends Model
 
     public function rating()
     {
-    	return $this->hasMany(\App\Models\Frontend\Rating::class,'id', 'rating_id');
+    	return $this->hasMany(\App\Models\Rating::class,'id', 'rating_id');
     }
     /**
      * Product belongs to .
