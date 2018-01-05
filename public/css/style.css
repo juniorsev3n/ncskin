@@ -1938,11 +1938,11 @@ width:60px;
 .link-list{
 margin:0 0 0 4px;
 }
-.footer-column
+/*.footer-column
 .link-list li:before{
 content:"-";
      color:#595959;
-}
+}*/
 
 .footer-payment-icons {
     text-align:center;

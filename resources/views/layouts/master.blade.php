@@ -110,7 +110,7 @@
 	                <div class="top-logo-holder col-sm-4 col-xs-12">
 
 	                    <div class="top-logo">
-	                      <a href="{{ url('/') }}"><img src="{{ url('images/logo-big.png') }}" alt="" class="logo"></a>
+	                      <a href="{{ url('/') }}"><img src="{{ url('images/barcelona-logo.png') }}" alt="" class="logo"></a>
 	                    </div>
 
 	                </div>
@@ -257,20 +257,20 @@
 		    </div>
 		</section>
 
-		<!--<section class="section-banners">
+		<<section class="section-banners">
 		    <div class="container">
 		        <div class="col-lg-6 col-md-12">
 		            <div class="homepage-banner">
-		                <a href="#"><img class="lazy" width="584" height="211"></a>
+		                <a href="#"><img class="lazy" width="584" height="211" src="{{ url('images/banner-design-onsale.jpg') }}"></a>
 		            </div>
 		        </div>
 		        <div class="col-lg-6 col-md-12">
 		            <div class="homepage-banner">
-		                <a href="#"><img class="lazy" width="584" height="211"></a>
+		                <a href="#"><img class="lazy" width="584" height="211" src="{{ url('images/banner-freeshipping.jpg') }}"></a>
 		            </div>
 		        </div>
 		    </div>
-		</section>-->
+		</section>
 
         <section class="section-footer">
 		    <div class="footer-holder">
@@ -389,14 +389,14 @@
 		            <li>
 		              <img alt="master card" src="{{ url('images/payments-mastercard.png') }}" />
 		            </li>
-		            <li>
+		            <!--<li>
 		              <img alt="discover" src="{{ url('images/payments-discover.png') }}" />
 		            </li>
 		            <li>
 		              <img alt="amex" src="{{ url('images/payments-amex.png') }}" />
-		            </li>
+		            </li>-->
 		        </ul>
-		        <div class="powered pull-right">Recreative</div>
+		        <div class="powered pull-right">ncskinbeauty.com by Recreative.ID</div>
 		    </div>
 		</section>
 
