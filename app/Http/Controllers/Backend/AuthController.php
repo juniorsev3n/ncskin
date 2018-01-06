@@ -11,10 +11,10 @@ class AuthController extends Controller
 {
     public function index()
     {
-    	if(Sentinel::getUser())
-        {
-            return redirect('admin/dashboard');
-        }
+    	//if(Sentinel::getUser())
+        //{
+        //    return redirect('admin/dashboard');
+        //}
         return view('backend.login');
     }
 

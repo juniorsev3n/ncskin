@@ -46,7 +46,7 @@ class AuthController extends Controller
                 return $backToLogin->with('error', 'password yang anda masukan salah');
             }
 
-            return redirect('dashboard');
+            return redirect('/');
         } catch (ThrottlingException $e) {
             $error = 'Too many attempts!';
         } catch (NotActivatedException $e) {

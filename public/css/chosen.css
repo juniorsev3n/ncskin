@@ -31,12 +31,12 @@ height:39px;
 
 
 .chosen-container:hover{
-    border-color: #34a992;
+    border-color: #428bca;
 }
 
 
 .md-input:focus, .md-input:hover {
-border-color: #34a992;
+border-color: #428bca;
 }
 
 .chosen-container-single {
@@ -192,7 +192,7 @@ text-transform: uppercase;
   cursor: default;
 }
 .chosen-container .chosen-results li.highlighted {
-  background-color: #34A994;
+  background-color: #428bca;
   color: #fff;
 }
 .chosen-container .chosen-results li.no-results {

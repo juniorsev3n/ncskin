@@ -34,42 +34,42 @@
     <style type="text/css">
         .md-button,
         .ls-card-form .submit-button {
-            background-color: rgb(52, 169, 148);
+            background-color: #428bca;
         }
         
         .md-button:hover,
         .ls-card-form .submit-button:hover {
-            background-color: #2d8e7d;
+            background-color: #6db8f9;
         }
         
         .top-cart-price{
-            color: rgb(52, 169, 148);
+            color: #428bca;
         }
         
         .total-buble{
-            background-color: rgb(52, 169, 148);
+            background-color: #428bca;
         }
 
         a:hover{
-            color: rgb(52, 169, 148);
+            color: #428bca;
         }
         .section-footer:before{
-            background-color: rgb(52, 169, 148);
+            background-color: #428bca;
         }
         header:after{
-            background-color: rgb(52, 169, 148);
+            background-color: #428bca;
         }
         .section-aboutus-page .members-holder .member-item .position, .section-stats .stat-item .value, .content-holder.about-us p a{
-            color: rgb(52, 169, 148);
+            color: #428bca;
         }
         .content-holder.about-us p a{
-            border-bottom: 1px solid rgb(52, 169, 148);
+            border-bottom: 1px solid #428bca;
         }
         .grid-list-buttons li.active i{
-            color: rgb(52, 169, 148);
+            color: #428bca;
         }
         .address-column p a{
-            color: rgb(52, 169, 148);
+            color: #428bca;
         }
 
         .product-item:hover .product-item{
@@ -77,10 +77,10 @@
             height:460px;
         }
         .breadcrumb{
-            border-bottom:solid rgb(52, 169, 148) 6px;
+            border-bottom:solid #428bca 6px;
         }
         .single-product-info-holder .nav-area-holder .back a{
-            color:rgb(52, 169, 148)5;
+            color:#428bca5;
         }
     </style>
 
@@ -96,16 +96,13 @@
 	                <div class="col-sm-4 col-xs-12">
 	                    <div class="login-menu-holder ic-sm-user">
 	                            @if($user = Sentinel::check())
-	                            Welcome, {{ $user->user }}
+	                            Welcome, {{ $user->first_name }}
 	                            <a href="{{ url('logout') }}">Logout</a>
 	                            @else
 	                            <a href="{{ url('login') }}">Login or Register</a>
 	                            @endif
 	                    </div>
-	                    <div class="hotline-holder ic-sm-phone">
-	                        <label>hotline:</label>
-	                        <span>62 81 111 113</span>
-	                    </div>
+	                    
 	                </div>
 	                <div class="top-logo-holder col-sm-4 col-xs-12">
 
@@ -143,19 +140,21 @@
 									</ul>
 								    <a class="top-chk-out md-button" href="/cart">check out</a>
 								</div>
+								<!--<div class="hotline-holder ic-sm-phone active">
+		                        <label>hotline:</label>
+		                        <span>62 81 111 113</span>-->
+	                   		</div>
 	                        </div>
-	                        <div class="search-holder">
-	                            <form action="search" method="get">
-	                                <input type="text" name="query" id="query" placeholder="Search" autocomplete="off" value="">
-	                            </form>
-	                        </div>
+	                        
 	                    </div>
 	                </div>
 	            </div>
 	        </section>
 	        <div class="top-menu visible-md visible-lg">
+	        	
 			    <ul>
-			      	<li><a href="{{ url('/')}}">HOME</a></li>
+			    	
+			      	<!--<li><a href="{{ url('/')}}">HOME</a></li>-->
                     @php
                         $parent_menu = \App\Models\Menu::getParentMenus();
                     @endphp
@@ -164,10 +163,8 @@
                             	$child_menu = \App\Models\Menu::getChildMenus($parent->id);
                             @endphp
                             @if(count($child_menu) > 0)
-                                <li id="{{ $parent->path }}-navigation">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ strtoupper($parent->title)}}
-                                        <b class="caret"></b>
-                                    </a>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ strtoupper($parent->title)}} </a>
                                     <ul class="dropdown-menu" role="menu">
                                         @foreach($child_menu as $key=>$child)
                                         <li><a href="{{ url('/'.$child->path) }}">{{$child->title}}</a></li>
@@ -175,7 +172,7 @@
                                     </ul>
                                 </li>
                             @else
-                                <li class="{{$parent->path}}-navigation" id="{{$parent->path}}-navigation">
+                                <li>
                                 <a href="{{ url('/'.$parent->path) }}">{{ strtoupper($parent->title) }}</a></li>
                             @endif
                         @endforeach
@@ -187,10 +184,16 @@
 			           <a href="{{ url('profil') }}">My Profile</a>
 			        </li>
 			        @else
-			        <li>
+			        <!--<li>
 			        	<a href="{{ url('login') }}">Login</a>
-			        </li>
+			        </li>-->
 			        @endif
+			        <!--<li class="search-holder">
+			        	
+	                            <form action="search" method="get">
+	                                <input type="text" name="query" id="query" placeholder="Search" autocomplete="on" value="">
+	                            </form>
+	                        </li>-->
 			    </ul>
 			</div>
 

@@ -82,7 +82,7 @@
 }
 .slider-selection {
   position: absolute;
-  background-color: #34A994;
+  background-color: #428bca;
   
   background-repeat: repeat-x;
  
@@ -100,7 +100,7 @@
   background-repeat: repeat-x;
  border-radius: 0px;
   opacity: 1;
-  border: 2px solid #34a992;
+  border: 2px solid #428bca;
 }
 .slider-handle.round {
   -webkit-border-radius: 20px;
