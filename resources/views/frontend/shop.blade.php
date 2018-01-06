@@ -174,9 +174,9 @@
                         
                 </div>
                 
-                <div class="paging-holder">
-                    {{ $products->links() }}
-                </div>
+                <!--<div class="paging-holder">-->
+                    {{ $products->links('vendor.pagination.default') }}
+                <!--</div>
                 
                     
             @endif
