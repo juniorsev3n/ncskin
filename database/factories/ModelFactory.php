@@ -26,9 +26,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
 	$name = $faker->sentence(3);
 	$products = [
-					0 => '/images/products/product01.jpg',
-					1 => '/images/products/product02.jpg',
-					2 => '/images/products/product03.jpg'
+					0 => '/images/products/1.png',
+					1 => '/images/products/2.png'
 				];
 
 	$optional = [

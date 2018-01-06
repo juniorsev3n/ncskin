@@ -11,17 +11,17 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="row">
                         @if (count(json_decode($product->images,true)) > 1)
-                            <div class="col-xs-1 col-sm-3 hidden-xs">
+                            <!--<div class="col-xs-1 col-sm-3 hidden-xs">
                                 <div class="single-product-vertical-gallery">
                                     <a class="fa fa-angle-up up-btn" href="#up"></a>
                                     <a class="fa fa-angle-down down-btn" href="#down"></a>
                                     <ul>
                                         @foreach(json_decode($product->images,true) as $key => $value)
-                                        <li><a class="vertical-gallery-item" href="#slide{{$key}}"><img class="lazy" alt="{{ $product->name }}" src="{{ $value }}" /></a></li>
+                                        <li><a class="vertical-gallery-item" href="#slide{{$key}}"><img class="lazy" alt="{{ $product->name }}" src="{{ $value }}" width="300" height="100" /></a></li>
                                         @endforeach
                                     </ul>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="col-xs-11 col-sm-9">
                                 <div class="single-product-gallery">
                                     <div class="nav-holder">
@@ -30,8 +30,8 @@
                                     </div>
                                     <div class="single-product-slider">
                                         @foreach(json_decode($product->images,true) as $key => $value)
-                                        <div class="single-product-gallery-item" id="slide{{$key}}">
-                                            <a data-rel="prettyphoto" href="{{ $value }}"><img alt="{{ $product->name }}" src="{{ $value }}" /></a>
+                                        <div class="single-product-gallery-item" id="slide{{ $key }}">
+                                            <a data-rel="prettyphoto" href="{{ $value }}"><img alt="{{ $product->name }}" src="{{ $value }}" width="450" /></a>
                                         </div>
                                         @endforeach
                                     </div>
@@ -49,8 +49,10 @@
                             <div class="row"><br>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                     <div class="product-item text-center">
+                                        @php $images =json_decode($item->images, true)
+                                        @endphp
                                       <a href="{{ url('product/'.$item->slug) }}">
-                                        <img class="product-img" src="" alt="" />
+                                        <img class="product-img" src="{{ $images[0] }}" alt="" />
                                       </a>
                                       <hr>
                                       <div class="title uppercase bold">
@@ -58,11 +60,10 @@
                                       </div>
                                       <div class="price">
                                         @if ($product->discount > 0)
-                                          <span class="previous-price">{{ $product->price }}</span>
+                                          <span class="previous-price">Rp. {{ $product->price }}</span>
                                         @endif
                                           <span style="text-decoration: line-through;">
-                                            {{ $product->price }}
-                                          </span> <br /> {{ ($product->price - $product->discount) }}
+                                          </span> <br /> Rp. {{ ($product->price - $product->discount) }}
                                       </div>
                                       @if ($product->discount > 0)
                                         <span class="salesign">SALE</span>
@@ -168,9 +169,9 @@
 
                                 <div class="price">
                                     @if ($product->discount > 0)
-                                        <span class="previous-price">{{ $product->price }}</span>
+                                        <span class="previous-price">Rp. {{ $product->price }}</span>
                                     @endif
-                                    <span  itemprop="price">{{ $product->price - ($product->price * $product->discount) }}</span>
+                                    <span  itemprop="price">Rp. {{ $product->price - ($product->price * $product->discount) }}</span>
                                 </div>
                                 @if(!empty($product->description))
                                     <div class="excerpt" itemprop="description">
@@ -180,33 +181,23 @@
 
                                 @if ($product->active == TRUE)
                                     <div class="drop-down-holder">
-                                        <!--@if (count(json_decode($product->optional)) > 0)
-                                            @foreach(json_decode($product->optional) as $key => $value)
+                                        <!--if (count(json_decode($product->optional),true) > 0)-->
+                                            <!--@foreach(json_decode($product->optional) as $key => $value)
                                               <div class="inline prod-options">
-                                                <h5 class="title" for="{{ $product->id }}">{{ $product->optional }}</h5>
+                                                <h5 class="title" for="{{ $product->id }}">{{ $key }}</h5>
                                                 <select id="{{ $key }}" name="options[{{ $product->id }}]" class="product-option md-select" data-ajax-handler="shop:product" data-ajax-update="#product-page=shop-product">
                                                     <option value="{{ $key }}">{{ $value }}</option>
                                                 </select>
                                               </div>
-                                            @endforeach
-                                        @endif
-                                        -->
-                                        @if (count(json_decode($product->optional)) > 0)
-                                        <h5>Product Extras</h5>
-                                          <div class="clearfix">
-                                            @foreach(json_decode($product->optional) as $key => $value)
-                                                <div class="extra">
-                                                    <label class="title" for="{{ $key }}">
-                                                          <input type="checkbox" id="{{ $key }}" name="extras[{{ $product->id }}]" data-ajax-handler="shop:product" data-ajax-update="#product-page=shop-product">
-                                                      {{ $value }}
-                                                    </label>
-                                                </div>
-                                            @endforeach
-                                          </div>
-                                        @endif
+                                            @endforeach-->
+                                        
                                         <div class="quantity inline">
                                             <h5>Quantity</h5>
-                                            <input class="md-input quantity" type="text" value="{{ old('quantity') }}" name="quantity"/>
+                                            <select class="md-input quantity" type="text" value="{{ old('quantity') }}" name="quantity"/>
+                                                @for($i=1; $i < 11; $i++)
+                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="buttons-holder">
@@ -229,53 +220,8 @@
                                     <div>
                                 @endif
 
-                                <!--@if ($product->optional != NULL)
-                                <div class="product-attributes">
-                                        <div class="row">
-                                            {% if product.priceTiers.count %}
-                                          <div class="col-xs-12 col-sm-6">
-                                            <h3>Bulk Pricing</h3>
-                                                    <div>
-                                                        <table class="volume-pricing-table">
-                                                          <thead><tr><td>Qty</td><td>Price</td></tr></thead>
-                                                          
-                                                          {% for priceTier in product.priceTiers %}
-                                                          <tr>
-                                                            <td>
-                                                              {% if loop.last %} {{-- {{priceTier.quantity}} --}}+
-                                                              {% else %} {{-- {{ priceTier.quantity}} - {{product.priceTiers[loop.index].quantity - 1}} --}} {% endif %}
-                                                            </td>
-                                                            <td>{{ $product->price }}/each</td>
-                                                          </tr>
-                                                          {% endfor %}
-                                                        </table>
-
-                                                    </div>
-                                          </div>
-                                      {% endif %}
-                                      {% if product.productAttributes.count %}
-                                          <div class="col-xs-12 col-sm-6">
-                                            <h3>Product Specs</h3>
-                                            <div>
-                                            <table class="attributes-table">
-                                                  {{-- {% for attribute in product.productAttributes %}
-                                                    <tr>
-                                                      <td><strong>{{ attribute.name }}:</strong></td>
-                                                      <td>{{ attribute.value }}</td>
-                                                    </tr>
-                                                  {% endfor %} --}}
-                                                </table>
-
-                                            </div>
-                                          </div>
-                                      {% endif %}
-                                        </div>
-                                </div>
-                            @endif
-                            -->
-
                                     <div class="social-buttons">
-                                        <span>share with your friends</span>
+                                        <span>share with your friends </span>
                                         <ul class="inline list-inline square-icons">
                                             <li class="facebook"><a href="http://www.facebook.com/sharer/sharer.php?u=http:{{ url("product/$product->slug") }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                             <li class="twitter"><a href="https://twitter.com/intent/tweet?text={{ $product->name }} http:{{ url("product/$product->slug") }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -301,7 +247,7 @@
                   </div>
                         <div class="modal-body">
                             <div class="panel-body section-contact-form">
-                                <form data-ajax-handler="system:onSendMessage">
+                                <form data-ajax-handler="system:onSendMessage" action="{{ url('write-review') }}" method="post">
                                     <div class="row field-row">
                                         <div class="col-xs-12 col-sm-12">
                                             <input type="text" class="required md-input" id="contact_name" name="fields[name]" value="" placeholder="Your name"/>
