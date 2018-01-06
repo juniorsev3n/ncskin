@@ -4,8 +4,6 @@
 @section('content')
 
 <section class="section-home-banner">
-		    <div class="container">
-
 		    	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				  <!-- Indicators -->
 				  <ol class="carousel-indicators">
@@ -40,7 +38,6 @@
 				  </a>
 				</div>
 		      <!--<img class="lazy" src="images/homepage-3-banner.jpg" />-->
-		    </div>
 		</section>
 
 		<section id="homepage-products-tab" class="section-products-grid">

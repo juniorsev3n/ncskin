@@ -129,7 +129,7 @@ text-transform: uppercase;
 .product-attributes .col-xs-12.col-sm-6{ margin-top: 20px;}
 .wrapper {
 background-color: #FBFBFB;
-margin: 0px 25px;
+margin: 0px 0px;
 }
 ::-webkit-input-placeholder {
    text-transform: uppercase;

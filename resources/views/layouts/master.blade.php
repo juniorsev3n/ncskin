@@ -110,7 +110,7 @@
 	                <div class="top-logo-holder col-sm-4 col-xs-12">
 
 	                    <div class="top-logo">
-	                      <a href="{{ url('/') }}"><img src="{{ url('images/barcelona-logo.png') }}" alt="" class="logo"></a>
+	                      <a href="{{ url('/') }}"><img src="{{ url('images/logo-nc.png') }}" alt="" class="logo" width="230" height="50"></a>
 	                    </div>
 
 	                </div>

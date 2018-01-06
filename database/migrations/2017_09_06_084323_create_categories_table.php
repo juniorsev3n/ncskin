@@ -18,8 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
-            $table->json('optional');
-            $table->json('images');
+            $table->text('optional');
+            $table->text('images');
             $table->integer('parrent_id');
             $table->integer('user_id')->unsigned();
             $table->boolean('active')->default(0);

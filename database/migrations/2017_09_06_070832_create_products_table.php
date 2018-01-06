@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('description');
-            $table->json('optional');
-            $table->json('images');
+            $table->text('optional');
+            $table->text('images');
             $table->integer('price');
             $table->boolean('is_discount')->default(0);
             $table->integer('discount');
