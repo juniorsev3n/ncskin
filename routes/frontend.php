@@ -4,6 +4,10 @@ Route::group(['namespace' => 'Frontend'], function(){
 
     Route::get('login', 'AuthController@index');
     Route::post('login', 'AuthController@postLogin');
+    Route::get('login/facebook', 'AuthController@redirectToProviderFacebook');
+    Route::get('login/facebook/callback', 'AuthController@handleProviderCallbackFacebook');
+    Route::get('login/google', 'AuthController@redirectToProviderGoogle');
+    Route::get('login/google/callback', 'AuthController@handleProviderCallbackGoogle');
     Route::get('logout', 'AuthController@getLogout');
     Route::get('password-reset', 'AuthController@getResetPassword');
     Route::get('contact', function()

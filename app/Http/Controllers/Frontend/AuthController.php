@@ -13,6 +13,7 @@ use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use DB;
 use App\User;
 use Validator;
+use Socialite;
 
 
 class AuthController extends Controller
@@ -23,10 +24,49 @@ class AuthController extends Controller
         return view('frontend.login');
     }
 
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProviderFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallbackFacebook()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        // $user->token;
+    }
+
+    public function redirectToProviderGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallbackGoogle()
+    {
+        $user = Socialite::driver('google')->user();
+
+        // $user->token;
+    }
+
     public function postLogin(Request $request)
     {
         $backToLogin = redirect('login')->withInput();
-        $this->validate($request, 
+        $this->validate($request,
             [
                 'email' => 'required',
                 'password' => 'required'
@@ -152,4 +192,3 @@ class AuthController extends Controller
         return redirect('login')->with('error', 'password telah berhasil diubah');
     }
 }
-

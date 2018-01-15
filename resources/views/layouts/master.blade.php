@@ -36,16 +36,16 @@
         .ls-card-form .submit-button {
             background-color: #428bca;
         }
-        
+
         .md-button:hover,
         .ls-card-form .submit-button:hover {
             background-color: #6db8f9;
         }
-        
+
         .top-cart-price{
             color: #428bca;
         }
-        
+
         .total-buble{
             background-color: #428bca;
         }
@@ -82,13 +82,20 @@
         .single-product-info-holder .nav-area-holder .back a{
             color:#428bca5;
         }
+        .navbar-fixed-top{
+           border-bottom: 2px #428bca;
+        }
+        .navbar-nav{
+          height: 100%;
+          border-bottom: 2px #428bca;
+        }
     </style>
 
 </head>
 
 <body class="homepage3">
     <div class="wrapper">
-    
+
 	<header>
 	    <div class=" container">
 	        <section class="style-one-header top-area">
@@ -102,12 +109,12 @@
 	                            <a href="{{ url('login') }}">Login or Register</a>
 	                            @endif
 	                    </div>
-	                    
+
 	                </div>
 	                <div class="top-logo-holder col-sm-4 col-xs-12">
 
 	                    <div class="top-logo">
-	                      <a href="{{ url('/') }}"><img src="{{ url('images/logo-nc.png') }}" alt="" class="logo" width="230" height="50"></a>
+	                      <a href="{{ url('/') }}"><img src="{{ url('images/logo-nc.png') }}" alt="NC Skin Beauty" class="logo" width="230" height="50"></a>
 	                    </div>
 
 	                </div>
@@ -127,14 +134,19 @@
 									            <img width="45" height="45" alt="" src="{{ url('images/products/product03.jpg') }}" />
 									        </div>
 									        <div class="body col-xs-9">
-									            <h5>item.product.name</h5>
-									            <div class="price">
-									                <span>IDR 0</span>
-									            </div>
-									            <a class="remove-item" href="#"
-									                data-ajax-handler="shop:cart" 
-									                data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart"
-									                data-ajax-extra-fields="delete_item='0'">x</a>
+                            <!--php
+                              $cart = \Cart::getContent();
+                            endphp
+									            foreach ($cart as $item)
+                                <h5> $cart->name </h5>
+  									            <div class="price">
+  									                <span>IDR  $cart->content </span>
+  									            </div>
+  									            <a class="remove-item" href="#"
+  									                data-ajax-handler="shop:cart"
+  									                data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart"
+  									                data-ajax-extra-fields="delete_item='0'">x</a>
+                              endforeach-->
 									        </div>
 									    </li>
 									</ul>
@@ -145,21 +157,21 @@
 		                        <span>62 81 111 113</span>-->
 	                   		</div>
 	                        </div>
-	                        
+
 	                    </div>
 	                </div>
 	            </div>
 	        </section>
 	        <div class="top-menu visible-md visible-lg">
-	        	
+
 			    <ul>
-			    	
-			      	<!--<li><a href="{{ url('/')}}">HOME</a></li>-->
+
+			      	<li><a href="{{ url('/')}}">HOME</a></li>
                     @php
                         $parent_menu = \App\Models\Menu::getParentMenus();
                     @endphp
                         @foreach($parent_menu as $parent)
-                            @php 
+                            @php
                             	$child_menu = \App\Models\Menu::getChildMenus($parent->id);
                             @endphp
                             @if(count($child_menu) > 0)
@@ -188,54 +200,64 @@
 			        	<a href="{{ url('login') }}">Login</a>
 			        </li>-->
 			        @endif
-			        <!--<li class="search-holder">
-			        	
-	                            <form action="search" method="get">
-	                                <input type="text" name="query" id="query" placeholder="Search" autocomplete="on" value="">
-	                            </form>
-	                        </li>-->
 			    </ul>
 			</div>
+      <nav class="navbar navbar-default navbar-fixed-top hide">
+       <div class="container">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="{{ url('/')}}"><img src="{{ url('images/logo-nc.png') }}" alt="NC Skin Beauty" class="logo" width="150" height="30"></a>
+         </div>
+         <div id="navbar" class="navbar-collapse collapse">
 
-			<select class="top-drop-menu  visible-sm visible-xs">
-			    <option value="{{ url('/') }}">
-			        Home
-			    </option>
-			    @php
-                        $parent_menu = \App\Models\Menu::getParentMenus();
-                    @endphp
-                        @foreach($parent_menu as $parent)
-                            @php 
-                            	$child_menu = \App\Models\Menu::getChildMenus($parent->id);
-                            @endphp
-                            @if(count($child_menu) > 0)
-                                <li id="{{ $parent->path }}-navigation">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ strtoupper($parent->title)}}
-                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        @foreach($child_menu as $key=>$child)
-                                        <li><a href="{{ url('/'.$child->path) }}">{{$child->title}}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @else
-                                <option value=""{{ url('/'.$parent->path) }}">{{ strtoupper($parent->title) }}</option>
-                            @endif
-                        @endforeach
-			    	@if($user = Sentinel::check())
-			        <option value="{{ url('orders') }}">
-			            My Orders
-			        </option>
-			        <option value="{{ url('profile') }}">
-			            My Profile
-			        </option>
-			        @endif
-			</select>
-	    </div>
+         <ul class="nav navbar-nav navbar-right">
+               <li class="active"><a href="{{ url('/')}}">HOME</a></li>
+                     @php
+                         $parent_menu = \App\Models\Menu::getParentMenus();
+                     @endphp
+                         @foreach($parent_menu as $parent)
+                             @php
+                               $child_menu = \App\Models\Menu::getChildMenus($parent->id);
+                             @endphp
+                             @if(count($child_menu) > 0)
+                                 <li class="dropdown">
+                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ strtoupper($parent->title)}} </a>
+                                     <ul class="dropdown-menu" role="menu">
+                                         @foreach($child_menu as $key=>$child)
+                                         <li><a href="{{ url('/'.$child->path) }}">{{$child->title}}</a></li>
+                                         @endforeach
+                                     </ul>
+                                 </li>
+                             @else
+                                 <li>
+                                 <a href="{{ url('/'.$parent->path) }}">{{ strtoupper($parent->title) }}</a></li>
+                             @endif
+                         @endforeach
+               @if($user = Sentinel::check())
+               <li>
+                  <a href="{{ url('order') }}">My Orders</a>
+               </li>
+               <li>
+                  <a href="{{ url('profil') }}">My Profile</a>
+               </li>
+               @else
+               <!--<li>
+                 <a href="{{ url('login') }}">Login</a>
+               </li>-->
+               @endif
+           </ul>
+       </div><!--/.nav-collapse -->
+     </div>
+   </nav>
+
 	</header>
 
-        
+
 		@yield('content')
 
 
@@ -403,9 +425,9 @@
 		    </div>
 		</section>
 
-    
+
     </div>
-    
+
     <script src="{{ url('js/bootstrap.min.js') }}"></script>
 
 	    <script type="text/javascript" src="{{ url('js/css_browser_selector.js') }}"></script>
@@ -423,9 +445,9 @@
 		<script type="text/javascript" src="{{ url('js/jquery.prettyPhoto.js') }}"></script>
 
 		<script type="text/javascript" src="{{ url('js/jquery.icheck.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url('js/jquery.creditCardValidator.js') }}"></script>  
+		<script type="text/javascript" src="{{ url('js/jquery.creditCardValidator.js') }}"></script>
 
 	<script type="text/javascript" src="{{ url('js/script.js') }}"></script>
-    
+
 </body>
 </html>

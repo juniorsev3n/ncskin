@@ -182,6 +182,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -235,6 +236,7 @@ return [
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class
     ],
 
 ];

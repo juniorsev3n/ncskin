@@ -9,6 +9,14 @@ $(window).bind("load", function() {
     }, 1000);
 });
 
+$(window).bind('scroll', function () {
+    if ($(window).scrollTop() > 50) {
+        $('.navbar').removeClass('hide');
+    } else {
+        $('.navbar').addClass('hide');
+    }
+});
+
 $(window).load(function() {
 
     $(".md-button addtocart").click(function(event) {
