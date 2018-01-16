@@ -14,6 +14,8 @@ use DB;
 use App\User;
 use Validator;
 use Socialite;
+use Mail;
+use App\Mail\ResetPassword;
 
 
 class AuthController extends Controller
@@ -29,9 +31,9 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProviderFacebook()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
@@ -39,26 +41,15 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallbackFacebook()
+    public function handleProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
-
-        // $user->token;
-    }
-
-    public function redirectToProviderGoogle()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function handleProviderCallbackGoogle()
-    {
-        $user = Socialite::driver('google')->user();
+        try 
+        {
+            $user = Socialite::driver('facebook')->user();
+        }catch(\Exception $e)
+        {
+            return redirect('/');
+        }
 
         // $user->token;
     }
@@ -133,27 +124,17 @@ class AuthController extends Controller
 
         }
         $reminder = Reminder::create($findUser);
-        $data_email = array('id'=>$findUser->id,
+        $data = array('id'=>$findUser->id,
                             'email'=> $findUser->email,
-                            'username'=>$findUser->username,
+                            'first_name'=>$findUser->first_name,
                             'subject_email'=>'Reset Password',
                             'activation_code'=>$reminder->code,
-                            'url'=>route('password-reset', [$findUser->id, $reminder->code])
+                            'url'=>route('reset-password', [$findUser->id, $reminder->code])
                             );
-        $template = 'email.reset_password';
-        $email = New Email;
-        $email->sendEmail($template, $data_email);
+        Mail::to($data['email'])->send(new ResetPassword($data));
         return redirect('login')->with('errror', 'Password telah berhasil di reset');
     }
 
-    public function sendEmailResetPassword($data)
-    {
-        $mail = Mail::queue('email.reset_password', $data,
-            function($message) use($data) {
-                $message->from('', '');
-                $message->to($data['email'], $data['email'])->subject($data['subject_email']);
-            });
-    }
 
     /**
     * Verify code for reset password .
@@ -167,11 +148,6 @@ class AuthController extends Controller
         if ($checkCode['code'] == 200) {
             $data['id'] = $id;
             $data['code'] = $code;
-            $data['form'] = [
-                'url' => route('post-admin-change-password'),
-                'id' => 'form-forgot',
-                'autocomplete' => 'off',
-            ];
             return view('frontend.auth.reset', $data);
         } else {
             return redirect('login')->with('error', 'Login request has expired');

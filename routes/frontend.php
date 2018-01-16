@@ -4,12 +4,12 @@ Route::group(['namespace' => 'Frontend'], function(){
 
     Route::get('login', 'AuthController@index');
     Route::post('login', 'AuthController@postLogin');
-    Route::get('login/facebook', 'AuthController@redirectToProviderFacebook');
-    Route::get('login/facebook/callback', 'AuthController@handleProviderCallbackFacebook');
-    Route::get('login/google', 'AuthController@redirectToProviderGoogle');
-    Route::get('login/google/callback', 'AuthController@handleProviderCallbackGoogle');
+    Route::get('login/{provider}', 'AuthController@redirectToProvider');
+    Route::get('login/{provider}/callback', 'AuthController@handleProviderCallback');
     Route::get('logout', 'AuthController@getLogout');
     Route::get('password-reset', 'AuthController@getResetPassword');
+    Route::post('password-reset', 'AuthController@postResetPassword');
+    Route::get('reset-password/{id}/{reminder}', 'AuthController@verifyResetPassword')->name('reset-password');
     Route::get('contact', function()
         {
             return view('frontend.contact');

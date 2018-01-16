@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Sentinel;
+use Reminder;
 
 class User extends Authenticatable
 {
@@ -26,4 +28,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function verifyCodeResetPassword($id,$code)
+    {
+        $user = Sentinel::findById($id);
+        $check = Reminder::exists($user);
+        if($check){
+            $data = [
+                'code' => 200,
+                ];
+            return $data;
+        }
+    }
 }
