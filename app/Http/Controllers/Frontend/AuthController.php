@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Event;
 use Reminder;
 use Sentinel;
+use Activation;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use DB;
@@ -16,6 +18,7 @@ use Validator;
 use Socialite;
 use Mail;
 use App\Mail\ResetPassword;
+use App\Mail\Register;
 
 
 class AuthController extends Controller
@@ -167,5 +170,36 @@ class AuthController extends Controller
         $user = Sentinel::findById($request->input('id'));
         Reminder::complete($user, $request->input('code'), $request->input('password'));
         return redirect('login')->with('error', 'password telah berhasil diubah');
+    }
+
+        /**
+     * Process post register.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $this->validate($request,
+                [
+                'email'   => 'required|email|unique:users',
+                'password' => 'confirmed|required'
+                ]);
+        $credentials = [
+                'email'    => $request->email,
+                'password' => $request->password,
+        ];
+
+        $user = Sentinel::register($credentials); 
+        $activation = Activation::create($user);
+        $data = array('id'=>$activation->id,
+                    'email'=> $user->email,
+                    'first_name'=>$user->first_name,
+                    'subject_email'=>'Activation Account',
+                    'activation_code'=>$activation->code,
+                    'url'=>route('activation', [$user->id, $activation->code])
+                    );
+        Mail::to($request->email)->send(new Register($data));
+        return redirect('login')->with('error', 'Registrasi telah berhasil, silahkan cek email untuk melakukan aktivasi');
     }
 }

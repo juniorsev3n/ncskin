@@ -44,7 +44,8 @@
                         <input name="password_confirmation" type="password" class="md-input col-xs-12"  placeholder="Confirm Password *" style="margin-bottom: 15px"/><br>
 
                         <input class="md-check" name="subscribe" type="checkbox" id="accepts_marketing" checked/> Recieve promotional emails
-                        <button class="md-button narrow">submit</button>
+                        <input type="submit" name="submit" class="md-button narrow" value="submit">
+                        {{ csrf_field() }}
                     </form>
                 </div>
             </div>
