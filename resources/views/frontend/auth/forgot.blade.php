@@ -30,7 +30,7 @@
                         <div id="passwordRestoreRequestForm">
                         <form action="{{ url('password-reset') }}" method="post">
                                 @if(!empty(session('error')))
-                                <span class="error">{{ $error }}</span>
+                                <span class="error">{{ session('error') }}</span>
                                 @endif
                                 <p>Please enter your email below, we will send you an email message with a link to enter a new password for your account.<p>
                                 <div class="row">

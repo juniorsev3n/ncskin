@@ -23,8 +23,10 @@
                         <a class="forget-link" href="{{ url('/password-reset') }}">forgot your password?</a>
                         <button class="md-button narrow " type="submit">sign in</button>
                         {{ csrf_field() }}
-                        <a href="{{ url('/login/facebook') }}"><img src="{{ url('images/icon/facebook.png')}}" width="400"></a>
-                        <a href="{{ url('/login/google') }}"><img src="{{ url('images/icon/google.png')}}" width="350"></a>
+                        <div class="row">
+                            <div class="col-xs-12" align="center"><a href="{{ url('/login/facebook') }}"><img src="{{ url('images/icon/facebook.png')}}" width="250"></a></div>
+                            <div class="col-xs-12" align="center"><a href="{{ url('/login/google') }}"><img src="{{ url('images/icon/google.png')}}" width="250"></a></div>
+                        </div>
                     </form>
                 </div>
                 <div class="col-xs-12 col-sm-6">

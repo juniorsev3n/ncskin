@@ -41,11 +41,12 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
         try 
         {
-            $user = Socialite::driver('facebook')->user();
+            $user = Socialite::driver($provider)->user();
+            return $user;
         }catch(\Exception $e)
         {
             return redirect('/');
@@ -132,7 +133,7 @@ class AuthController extends Controller
                             'url'=>route('reset-password', [$findUser->id, $reminder->code])
                             );
         Mail::to($data['email'])->send(new ResetPassword($data));
-        return redirect('login')->with('errror', 'Password telah berhasil di reset');
+        return redirect('password-reset')->with('error', 'Password telah berhasil di reset, harap cek email anda');
     }
 
 
@@ -148,9 +149,9 @@ class AuthController extends Controller
         if ($checkCode['code'] == 200) {
             $data['id'] = $id;
             $data['code'] = $code;
-            return view('frontend.auth.reset', $data);
+            return view('frontend.auth.reset-form', $data);
         } else {
-            return redirect('login')->with('error', 'Login request has expired');
+            return redirect('login')->with('error', 'Reset Password Gagal');
         }
 
     }
