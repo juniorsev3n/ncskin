@@ -183,23 +183,100 @@ class AuthController extends Controller
         $this->validate($request,
                 [
                 'email'   => 'required|email|unique:users',
-                'password' => 'confirmed|required'
+                'password' => 'confirmed|required',
+                'first_name' => 'required',
+                'no_hp' => 'required|numeric'
                 ]);
         $credentials = [
                 'email'    => $request->email,
                 'password' => $request->password,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'no_hp' => $request->no_hp,
         ];
+        try{
+            DB::beginTransaction();
 
-        $user = Sentinel::register($credentials); 
-        $activation = Activation::create($user);
-        $data = array('id'=>$activation->id,
-                    'email'=> $user->email,
-                    'first_name'=>$user->first_name,
-                    'subject_email'=>'Activation Account',
-                    'activation_code'=>$activation->code,
-                    'url'=>route('activation', [$user->id, $activation->code])
-                    );
-        Mail::to($request->email)->send(new Register($data));
-        return redirect('login')->with('error', 'Registrasi telah berhasil, silahkan cek email untuk melakukan aktivasi');
+            $user = Sentinel::register($credentials); 
+            $activation = Activation::create($user);
+            $data = array('id'=>$activation->id,
+                        'email'=> $user->email,
+                        'first_name'=> $user->first_name,
+                        'no_hp' => $user->no_hp,
+                        'subject_email'=> 'Activation Account',
+                        'activation_code'=> $activation->code,
+                        'url'=>route('activation', [$user->id, $activation->code])
+                        );
+            //Mail::to($request->email)->send(new Register($data));
+            Mail::send('mail.register',$data,function($m) use($data){ 
+                    $m->to($data['email'])->subject($data['subject_email']);
+                });
+            
+            $message = 'NEUCOME - Kode otp adalah: '.$activation->code;
+
+            $client = new \GuzzleHttp\Client();
+            $res = $client->post('http://smsgateway.me/api/v3/messages/send', 
+                [
+                    'form_params' => [
+                            'email' => env('SMS_EMAIL', ''),
+                            'password' => env('SMS_PASSWORD', ''),
+                            'device' => env('SMS_DEVICE', ''),
+                            'number' => $request->no_hp,
+                            'message' => $message,
+                    ]
+                ]);
+
+            $response = json_decode($res->getBody());
+
+            if(isset($response)){
+                
+                return redirect()->route('aktifasi', ['id' => $user->id])->with('status', 'Registrasi telah berhasil, silahkan masukan kode otp');
+                DB::commit();
+            }
+            else{
+                DB::rollBack();
+                return redirect('login')->with('error', 'Registrasi gagal, silahkan ulangi.');}
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect('login')->with('error', $e->getMessage());
+        }
+    }
+
+    public function getAktifasi(Request $request){
+        return view('frontend.auth.aktifasi', ['id' => $request->id]);
+    }
+
+    public function postAktifasi(Request $request){
+        $this->validate($request, [
+            'kodeotp' => 'required|numeric',
+            'id' => 'required|numeric']);
+
+        try{
+            $user = Sentinel::findById($request->id);
+            if (Activation::complete($user, $request->kodeotp))
+            {
+                Sentinel::login($user);
+                return redirect('dashboard')->with('status','Akun anda telah aktif silahkan login');
+            }
+            else
+            {
+                return redirect('login')->with('error','Aktifasi gagal');
+            }
+        }catch(\Exception $e){
+            return redirect('login')->with('error', 'Error');
+        }
+    }
+    public function activation($id,$reminder){
+        $user = Sentinel::findById($id);
+
+        if (Activation::complete($user, $reminder))
+        {
+            return redirect('login')->with('status','Akun anda telah aktif silahkan login');
+        }
+        else
+        {
+            return redirect('login')->with('error','Aktifasi gagal');
+        }
     }
 }

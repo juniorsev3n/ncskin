@@ -11,6 +11,8 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::post('password-reset', 'AuthController@postResetPassword');
     Route::get('reset-password/{id}/{reminder}', 'AuthController@verifyResetPassword')->name('reset-password');
     Route::get('activation/{id}/{reminder}', 'AuthController@activation')->name('activation');
+    Route::get('aktivasi', 'AuthController@getAktifasi')->name('aktifasi');
+    Route::post('aktivasi', 'AuthController@postAktifasi');
     Route::post('register', 'AuthController@postRegister');
     Route::get('contact', function()
         {
