@@ -6,6 +6,7 @@
 		<div class="row">
 		<div class="col-md-12">
 		<h2>Menu List</h2>
+		<a href="{{ url('admin/menu/add') }}" class="btn btn-primary">Add Menu</a>
 		<table id="product-table" class="table table-striped table-bordered table-hover">
 		    <thead>
 		        <tr>

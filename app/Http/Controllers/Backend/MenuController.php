@@ -25,4 +25,32 @@ class MenuController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
+
+    public function getAdd(){
+        return view('backend.menu.add');
+    }
+
+    public function postAdd(Request $request){
+        $this->validate($request,
+            [
+                'name' => 'required',
+                'path' => 'required',
+            ]);
+
+        try{
+            $menu = new Menu;
+            $menu->title = $request->name;
+            $menu->path = $request->path;
+            $menu->description = isset($request->description) ? : '';
+            $menu->parent = isset($request->parent) ? : 0;
+            $menu->sort_order = 0;
+            $menu->is_display = $request->active;
+            $menu->save();
+
+            return redirect('admin/menu')->with('status', 'Menu telah ditambahkan!');
+        }catch(\Exception $e){
+            return redirect('admin/menu')->with('error', $e->getMessage());
+        }
+
+    }
 }

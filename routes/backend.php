@@ -31,6 +31,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function (){
 
 
 		Route::get('menu', 'MenuController@index');
+		Route::get('menu/add', 'MenuController@getAdd');
+		Route::post('menu/add', 'MenuController@postAdd');
 		Route::get('menu/data', 'MenuController@getData');
 	});
 });
