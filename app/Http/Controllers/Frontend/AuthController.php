@@ -49,7 +49,11 @@ class AuthController extends Controller
         try 
         {
             $user = Socialite::driver($provider)->user();
-            return $user;
+
+            $token = $user->token;
+
+            $user = Socialite::driver($provider)->userFromToken($token);
+            dd($user);
         }catch(\Exception $e)
         {
             return redirect('/');
