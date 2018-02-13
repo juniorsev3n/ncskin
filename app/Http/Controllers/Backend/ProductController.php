@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function getData(){
     	$products = Product::select(['id','name','images','price','stock']);
-        return Datatables::of($products)
+        return Datatables::eloquent($products)
             ->addColumn('action', function ($product) {
                 return '
                 <a href="javascript:view('.$product->id.')" class="btn btn-md btn-success"><i class="fa fa-view"></i> View</a>
@@ -28,7 +28,7 @@ class ProductController extends Controller
             	return '<img src="'.url($image[0]).'" width="75" />';
             })
             ->rawColumns(['images', 'action'])
-            ->make(true);
+            ->make();
     }
 
     public function getAdd(){

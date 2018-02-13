@@ -15,7 +15,7 @@ class MenuController extends Controller
 
     public function getData(){
     	$menus = Menu::selectRaw("id, title, path, parent");
-        return Datatables::of($menus)
+        return Datatables::eloquent($menus)
             ->addColumn('action', function ($menus) {
                 return '
                 <a href="javascript:view('.$menus->id.')" class="btn btn-md btn-success"><i class="fa fa-view"></i> View</a>

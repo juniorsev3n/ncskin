@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function getData()
     {
     	$categories = Category::select(['id','name','images','description','active']);
-        return Datatables::of($categories)
+        return Datatables::eloquent($categories)
             ->addColumn('action', function ($categories) {
                 return '
                 <a href="javascript:view('.$categories->id.')" class="btn btn-md btn-success"><i class="fa fa-view"></i> View</a>
