@@ -24,21 +24,42 @@ class ShopController extends Controller
     	return view('frontend.shop', compact('products','categories'));
     }
 
-    public function addToCart($details = [])
+    public function getAdd(Request $request)
     {
-        $cart = Cart::add($details);
-        return $cart;
+        try{
+            $product = Product::find($request->id);
+            if($product->stock >= 1){
+                Cart::add($product->id, $product->name, $request->qty, $product->price);
+                return redirect()->back()->with('status', 'Item telah ditambahkan ke keranjang');
+            }
+            return redirect()->back()->with('error','Item tidak ditemukan');
+        }catch(\Exception $e){
+            \Log::info($e->getMessage());
+            return redirect()->back()->with('error','Item gagal ditambahkan ke keranjang');
+        }
     }
 
-    public function total()
+    public function getTotal()
     {
         return Cart::total();
     }
 
-    public function getCart()
+    public function getContent()
     {
         $cart = Cart::content();
-        return view('frontend.shop.cart', compact('cart'));
+        $total = $this->getTotal();
+        //dd($cart);
+        return view('frontend.shop.cart', compact('cart','total'));
+    }
+
+    public function getRemove($RowId)
+    {
+        return Cart::remove($RowId);
+    }
+
+    public function getDestroy()
+    {
+        return Cart::destroy();
     }
 
 }

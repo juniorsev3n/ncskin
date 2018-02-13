@@ -3,6 +3,7 @@
 @section('title','Cart')
 
 @section('content')
+<section>
 <div class="row">
 <div class="col-md-12 col-lg-9">
     <div class="items-holder">
@@ -17,7 +18,7 @@
 		        <div class="brand">
 		        </div>
 		        <div class="title">
-		            <a href="/product/"></a>
+		            <a href="{{ url('product/'.str_slug($content->name)) }}">{{ $content->name }}</a>
 		            <ul class="options">
 		        @if(isset($description))
 		          <li>{{ $description }}</li>
@@ -32,8 +33,7 @@
 		                        <thead><tr><td>Qty</td><td>Price</td></tr></thead>  
 		                        <tr>
 		                            <td>
-		                                 if loop.last  priceTier.quantity+
-		                                 else   priceTier.quantity - item.product.priceTiers[loop.index].quantity - 1  endif 
+		                                
 		                            </td>
 		                            <td>{{ $content->price }}</td>
 		                        </tr>
@@ -50,22 +50,20 @@
 		                <input type="text" name="item_quantity" class="md-input quantity" value="{{ $content->qty }}"> 
 		        </div>
 		        <div class="total-price">
-		             {{ $content->qty }} 
+		             {{ $content->price }} 
 		        </div>
-		            <a class="close-btn" href="#close"
-		            data-ajax-handler="shop:cart"
-		            data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart"
-		            data-ajax-extra-fields="delete_item=' '"></a> 
+		            <a></a> 
 		    </div>
 		</div>
 		@endforeach
 
     </div>            
 </div>
+@if(count($cart) > 0)
 <div id="cart-totals">
 <div class="col-md-12 col-lg-3">
     <div class="right-sidebar">
-     @if(count($cart) > 0) 
+     
         <div class="widget shopping-cart-summary">
             <h4 class="md-bordered-title">shopping cart summary</h4>
             <form>
@@ -73,13 +71,13 @@
                  @if(isset($total)) 
                     <fieldset>
                         <label class="col-xs-6">discount</label>
-                        <span class="col-xs-6 value"> totals.discountTotal</span>
+                        <span class="col-xs-6 value"></span>
                     </fieldset>
                  @endif 
 
                 <fieldset>
                     <label class="col-xs-6">cart subtotal</label>
-                    <span class="col-xs-6 value"> totals.subtotal</span>
+                    <span class="col-xs-6 value"></span>
                 </fieldset>
 
                  @if(\Request::get('shop')) 
@@ -98,28 +96,33 @@
                     </fieldset>
                  @else  
 
-                    <input class="md-input col-xs-12" placeholder="coupon code" value=" coupon_code " name="coupon" id="coupon"/>
+                    <input class="md-input col-xs-12" placeholder="coupon code" value="" name="coupon" id="coupon"/>
 
-                    <a class="md-button black" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Update cart</a>
+                    <a class="md-button black" href="#">Update cart</a>
 
                      @if (\Auth::check()) 
                         <a class="md-button large col-xs-12" href=" url('/checkout') ">Checkout</a>
                             <a href="{{ url('shop') }}">continue shopping</a>
                      @else 
-                        <a class="md-button large col-xs-12" href=" url('/checkout-start') ">Checkout</a>
+                        <a class="md-button large col-xs-12" href="{{ url('checkout') }}">Checkout</a>
                             <a href="{{ url('shop') }}">continue shopping</a>
                      @endif 
 
                  @endif
             </form>
-        </div>
-
-     @else 
-        <h4 class="md-bordered-title">Your cart is empty!</h4>
-        <a class="md-button col-xs-12 cart-empty-button" href="{{ url('shop') }} ">Continue shopping <span class="fa fa-arrow-circle-right"></span></a>
-     @endif 
+        </div> 
     </div>
 </div>
 </div>
+@else
+<div class="col-md-4"></div>
+<div class="col-md-4">
+    <div class="items-holder"> 
+        <h4 class="md-bordered-title">Your cart is empty!</h4>
+        <a class="md-button col-xs-12 cart-empty-button" href="{{ url('shop') }} ">Continue shopping <span class="fa fa-arrow-circle-right"></span></a>
+  	</div>
 </div>
+@endif
+</div>
+</section>
 @endsection

@@ -121,34 +121,33 @@
 	                <div class="col-sm-4 col-xs-12">
 	                    <div class="wish-cart-holder">
 	                        <div class="top-cart-holder ic-sm-basket" id="mini-cart">
+	                        @php
+                              			$cart = Cart::content();
+                              			$count = Cart::count();
+                            		@endphp
 	                            <a href="{{ url('cart') }}">shopping cart</a>:
-								<span class="top-cart-price">IDR 0</span>
+								<span class="top-cart-price">IDR {{ \Cart::total(2,',') }}</span>
 								<div class="total-buble">
-								    <span>0</span>
+								    <span>{{ $count }}</span>
 								</div>
 
 								<div class="hover-holder">
 								    <ul class="basket-items ">
+								    
+                            		@foreach ($cart as $item)
 									    <li class="row">
 									        <div class="thumb col-xs-3">
-									            <img width="45" height="45" alt="" src="{{ url('images/products/product03.jpg') }}" />
+									            <img width="45" height="45" alt="" src="{{ url('images/products/2.png') }}" />
 									        </div>
 									        <div class="body col-xs-9">
-                            <!--php
-                              $cart = \Cart::getContent();
-                            endphp
-									            foreach ($cart as $item)
-                                <h5> $cart->name </h5>
+                            				<h5>{{ $item->name }}</h5>
   									            <div class="price">
-  									                <span>IDR  $cart->content </span>
+  									                <span>IDR  {{ $item->price }} </span>
   									            </div>
-  									            <a class="remove-item" href="#"
-  									                data-ajax-handler="shop:cart"
-  									                data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart"
-  									                data-ajax-extra-fields="delete_item='0'">x</a>
-                              endforeach-->
+  									            <a class="remove-item" href="{{ url('get-remove'.$item->id) }}">x</a>
 									        </div>
 									    </li>
+									@endforeach
 									</ul>
 								    <a class="top-chk-out md-button" href="/cart">check out</a>
 								</div>

@@ -109,7 +109,7 @@
                                             <div class="buttons-holder">
                                                 <div class="add-cart-holder">
                                                     <input type="hidden" name="productId" value="{{ $product->id }}"/>
-                                                    <a class="md-button" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product">Add to Cart</a>
+                                                    <a href="{{ url('add-to-cart?id='.$product->id.'&qty=1')}}" class="btn btn-md btn-primary">Add to Cart</a>
                                                 </div>
                                             </div>
                                         </div>

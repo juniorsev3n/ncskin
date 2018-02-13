@@ -2,6 +2,7 @@
 
 Route::group(['namespace' => 'Frontend'], function(){
 
+    //////////////////////////////////////////////////////////////////////////////
     Route::get('login', 'AuthController@index');
     Route::post('login', 'AuthController@postLogin');
     Route::get('login/{provider}', 'AuthController@redirectToProvider');
@@ -14,6 +15,9 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('aktivasi', 'AuthController@getAktifasi')->name('aktifasi');
     Route::post('aktivasi', 'AuthController@postAktifasi');
     Route::post('register', 'AuthController@postRegister');
+    ///////////////////////////////////////////////////////////////////////////////
+
+
     Route::get('contact', function()
         {
             return view('frontend.contact');
@@ -22,25 +26,20 @@ Route::group(['namespace' => 'Frontend'], function(){
         {
             return view('frontend.about');
         });
+
+    ///////////////////////////////////////////////////////////////////
     Route::get('shop', 'ShopController@index')->name('shop');
-    Route::get('cart', 'ShopController@getCart')->name('cart');
+    Route::get('add-to-cart', 'ShopController@getAdd')->name('add-to-cart');
+    Route::get('get-total', 'ShopController@getTotal');
+    Route::get('cart', 'ShopController@getContent');
+    Route::get('get-remove/{{RowId}}', 'ShopController@getRemove');
+    ///////////////////////////////////////////////////////////////////
 
 
     Route::get('/payment-confirmation', 'ClientController@paymentConfirm');
     Route::post('/payment-confirmation', 'ClientController@postPaymentConfirm');
 
-
-    /**************************************
-     * Route customer for payment process *
-     **************************************/
-
-        /***********************************
-         * Route customer for showing cart *
-         ***********************************/
-        Route::get('cart', 'CartController@index');
-        Route::get('destroy/{rowId}', 'CartController@destroy');
-        Route::post('add-to-cart', 'CartController@cart');
-        Route::post('update-cart', 'CartController@update');
+        
 
         /***********************************
          * Route customer for payment term *
