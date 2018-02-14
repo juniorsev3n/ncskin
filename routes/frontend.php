@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('get-total', 'ShopController@getTotal');
     Route::get('cart', 'ShopController@getContent');
     Route::get('get-remove/{{RowId}}', 'ShopController@getRemove');
+    Route::view('checkout-start', 'frontend.shop.checkout-start');
     ///////////////////////////////////////////////////////////////////
 
 

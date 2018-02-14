@@ -1,116 +1,45 @@
-@extends('layouts.master')
+@extends('layouts.default')
 @section('title','Contact')
 
 
 
 @section('content')
-<section class="section-contact-page style-2">
-<div class="map-holder">
-                    <div id="map" class="map center"></div>
-                </div>
-</section>
-<section class="section-contact-form-holder">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="content-holder about-us">
-                    <h3>Sed eleifend ipasum id auctor ultrices roin consectetur tincidunt dignissim.</h3>
-                    <p>
-                    <p>Aenean placerat tempus iaculis. In venenatis quis elit ut facilisis. Sed nec massa accumsan est egestas mollis vitae id mi. Aenean et laoreet velit.
-                    </p>
-                    <p>Barcelona - eCommerce  <br>
-                        4 East 80th Streetd<br>
-                        New York, NY
-                    </p>
-                    <p>
-                        (123) 941 756 1234<br>
-                        (123) 941 756 1234<br>
-                        <br>
-                        <a href="#">contact@yourstore.com</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section-addresses">
-    <div class="container">
-        <div class="col-sx-12 col-sm-4">
-            <div class="address-column">
-                <h3>berlin</h3>
-                <p>
-                    Behrenstrasse 37<br>
-                    128 Anne Frank<br>
-                    10117 Berlin<br>
-                    Germany<br>
-                    <br>
-                    +43 478 613 978<br>
-                    <a href="#">mail@togermany.pls</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-sx-12 col-sm-4">
-            <div class="address-column">
-                <h3>madrid</h3>
-                <p>
-                    Behrenstrasse 37<br>
-                    128 Anne Frank<br>
-                    10117 Berlin<br>
-                    Germany<br>
-                    <br>
-                    +43 478 613 978<br>
-                    <a>mail@togermany.pls</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-sx-12 col-sm-4">
-            <div class="address-column">
-                <h3>london</h3>
-                <p>
-                    Behrenstrasse 37<br>
-                    128 Anne Frank<br>
-                    10117 Berlin<br>
-                    Germany<br>
-                    <br>
-                    +43 478 613 978<br>
-                    <a>mail@togermany.pls</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section-contact-form">
+<div class="container-fluid about-head">
   <div class="container">
-    <div class="col-xs-12">
-         <h3>Send us a message</h3>
-          <form data-ajax-handler="system:onSendMessage">
-
-              <div class="row field-row">
-                  <div class="col-xs-6">
-                      <input class="required md-input" placeholder="email address*" value="" name="fields[email]" id="fields_email"/>
-                      <span class="error"></span>
-                  </div>
-              </div>
-
-              <div class="row field-row">
-                  <div class="col-xs-6">
-                      <input class="required md-input" placeholder="name*" value="" name="fields[name]" id="fields_name" />
-                      <span class="error"></span>
-                  </div>
-              </div>
-
-              <div class="row field-row">
-                  <div class="col-xs-6">
-                      <textarea rows="10" class="required md-input" placeholder="message*" value="" name="fields[message]" id="fields_message"></textarea>
-                      <span class="error"></span>
-                  </div>
-              </div>
-
-              <input type="submit" class="md-button" value="Submit"/>
-              <input type="text" name="hp" value="" style="display: none"/>
-          </form>
+    <div class="row">
+      <h1>Contact Ventro</h1>
     </div>
   </div>
-</section>
+</div>
+
+<div class="container contact-form">
+  <div class="row">
+    <div class="col-md-9">
+      <form data-ajax-handler="system:onSendMessage">
+        <div class="form" id="contact-form">
+          <h3>Need to send a message?</h3>
+          <div class="form-group">
+            <input class="required input-sm form-control" placeholder="Email Address*" value="" name="fields[email]" id="fields_email"/>
+            <span class="error"></span><br><br>
+    
+            <input class="required input-sm form-control" placeholder="Name*" value="" name="fields[name]" id="fields_name" />
+            <span class="error"></span><br><br>
+
+            <textarea rows="10" class="required input-sm form-control" placeholder="Message*" value="" name="fields[message]" id="fields_message"></textarea>
+            <span class="error"></span>
+          </div>
+          <input type="hidden" name="redirect" value="{{ url('/') }}"/>
+          <input type="submit" class="btn-default btn" value="Submit"/>
+          <input type="text" name="hp" value="" style="display: none"/>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3 address">
+      <h3>Contact Us here</h3>
+      <p><i class="fa fa-envelope"></i> contact@ventro.com</p>
+      <p><i class="fa fa-phone"></i> (883)837-8383</p>
+      <p><i class="fa fa-clock-o"></i>Monday-Friday 1-9</p>
+    </div>
+  </div>
+</div>
 @endsection

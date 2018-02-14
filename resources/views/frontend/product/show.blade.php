@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.default')
 @section('title', $product->name ?: 'Not Found')
 
 @section('content')

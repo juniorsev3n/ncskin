@@ -111,7 +111,8 @@ $('.banner').hammer().bind('swipeleft', function() {
             $('nav').hide();
             $('nav').removeClass('nav-mobile');
             $('nav').show();
-        }         
+        } 
+
     }); // END
 
     // Star Rating

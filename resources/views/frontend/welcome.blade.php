@@ -7,9 +7,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>{{ config('custome.name') }}</h1>
-				<p>{{ config('custome.subtitle') }}</p>
-				<a href="#{{ config('custome.name') }}" class="btn btn-default btn-cta">{{ config('custome.name') }}</a>
+				<h1>{{ config('custom.name') }}</h1>
+				<p>{{ config('custom.subtitle') }}</p>
+				<a href="#{{ config('custom.name') }}" class="btn btn-default btn-cta">{{ config('custom.name') }}</a>
 			</div>
 		</div>
 	</div>
@@ -17,7 +17,7 @@
 
 	<div class="container-fluid home-categories">
 		<div class="col-md-4 home-box">
-			<img src="" alt="">
+			<img src="{{ url('images/box-home.jpg')}}" alt="">
 			<div class="home-box-content">
 				<h2>Track Health</h2>
 				<p>All the fitness trackers</p>
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="col-md-4 home-box">
-			<img src="" alt="">
+			<img src="{{ url('images/box-lifestyle.jpg')}}" alt="">
 			<div class="home-box-content">
 				<h2>Save Time</h2>
 				<p>Tech for the fast-paced life</p>
@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		<div class="col-md-4 home-box">
-			<img src="" alt="">
+			<img src="{{ url('images/box-health.jpg')}}" alt="">
 			<div class="home-box-content">
 				<h2>Home Care</h2>
 				<p>Comfort your life at home</p>

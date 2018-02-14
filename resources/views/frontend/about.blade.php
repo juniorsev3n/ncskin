@@ -1,198 +1,35 @@
-@extends('layouts.master')
+@extends('layouts.default')
 @section('title', 'About')
 
 
 @section('content')
-<section class="section-aboutus-page">
-    <div class="banner">
-        <img alt="" class="lazy" src="images/homepage-3-banner.jpg" />  
-    </div>
+<div class="container-fluid about-head">
     <div class="container">
-        <div class="row about-us-top">
-
-            <div class=" col-sm-12 col-md-5">
-
-                <div class="map-holder">
-                     <div id="map" class="map center"></div> 
-                </div>
-            </div>
-            <div class=" col-sm-12 col-md-7">
-                <div class="content-holder about-us">
-                    <h3>Sed eleifend ipasum id auctor ultrices roin consectetur tincidunt dignissim.</h3>
-                    <p>
-
-                        <strong>Aenean placerat tempus iaculis. In venenatis quis elit ut facilisis.</strong> Sed nec massa accumsan est egestas mollis vitae id mi. Aenean et laoreet velit. Pellentesque nec massa pellentesque, tempus purus lacinia, vestibulum eros. 
-                    </p>
-                    <p>
-                        Cras porttitor sagittis ipsum, eu molestie tellus accumsan quis. Nam lectus nibh, lobortis sodales tempor vitae, tincidunt sit amet metus. Donec posuere lectus lacus, condimentum scelerisque leo fringilla sed. Suspendisse eu lorem vulputate nisl consectetur sollicitudin. <a href="#">Pellentesque accumsan luctus porta.</a>
-                    </p>
-
-                    <blockquote class="md-quote">
-                        <p>Sed malesuada diam sed felis volutpat, quis convallis leo ullamcorper. Vestibulum dictum tortor in nisi gravida suscipit. </p>
-                    </blockquote>
-                </div>
-            </div>
+        <div class="row">
+            <h1>About Ventro</h1>
         </div>
-        <hr>
-        <div class="row members-holder">
-            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
-                <div class="member-item">
-                    <div class="image">
-                        <img class="lazy" alt="" src="images/team-member-01.png" />
-                    </div>
-                    <div class="member-info">
-                        <span class="name">Michał Kowalski</span><span class="devider">|</span><span class="position">Designer</span>
-                        <p>
-                            Cras porttitor sagittis ipsum, eu molestie tellus accumsan quis. Nam lectus nibh, lobortis sodales tempor vitae.
-                        </p>
-                        <ul class="list-inline member-socials">
-                            <li><a class="fa fa-facebook" href="#fb"></a></li>
-                            <li><a class="fa fa-twitter" href="#tw"></a></li>
-                            <li><a class="fa fa-google-plus" href="#gplus"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
-                <div class="member-item">
-                    <div class="image">
-                        <img class="lazy" alt="" src="images/team-member-02.png" />
-                    </div>
-                    <div class="member-info">
-                        <span class="name">Julia Doe</span><span class="devider">|</span><span class="position">ceo</span>
-                        <p>
-                            Cras porttitor sagittis ipsum, eu molestie tellus accumsan quis. Nam lectus nibh, lobortis sodales tempor vitae.
-                        </p>
-                        <ul class="list-inline member-socials">
-                            <li><a class="fa fa-facebook" href="#fb"></a></li>
-                            <li><a class="fa fa-twitter" href="#tw"></a></li>
-                            <li><a class="fa fa-google-plus" href="#gplus"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
-                <div class="member-item">
-                    <div class="image">
-                        <img class="lazy" alt="" src="images/team-member-03.png" />
-                    </div>
-                    <div class="member-info">
-                        <span class="name">Emin Diary</span><span class="devider">|</span><span class="position">developer</span>
-                        <p>
-                            Cras porttitor sagittis ipsum, eu molestie tellus accumsan quis. Nam lectus nibh, lobortis sodales tempor vitae.
-                        </p>
-                        <ul class="list-inline member-socials">
-                            <li><a class="fa fa-facebook" href="#fb"></a></li>
-                            <li><a class="fa fa-twitter" href="#tw"></a></li>
-                            <li><a class="fa fa-google-plus" href="#gplus"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div  class="col-xs-12 col-sm-6 col-lg-3  ">
-                <div class="member-item">
-                    <div class="image">
-                        <img class="lazy" alt="" src="images/team-member-04.png" />
-                    </div>
-                    <div class="member-info">
-                        <span class="name">john doe</span><span class="devider">|</span><span class="position">delivery</span>
-                        <p>
-                            Cras porttitor sagittis ipsum, eu molestie tellus accumsan quis. Nam lectus nibh, lobortis sodales tempor vitae.
-                        </p>
-                        <ul class="list-inline member-socials">
-                            <li><a class="fa fa-facebook" href="#fb"></a></li>
-                            <li><a class="fa fa-twitter" href="#tw"></a></li>
-                            <li><a class="fa fa-google-plus" href="#gplus"></a></li>
-                        </ul>
-                    </div>
-                </div>
+    </div>
+</div>
+
+<div class="container about-text">
+    <div class="row">
+        <div class="col-md-9">
+            <p>
+    Sugar black qui grounds body barista seasonal percolator lungo pumpkin spice wings froth milk cream latte. Espresso a, mazagran organic breve, that extraction, extra est affogato beans whipped plunger pot white. Robust, crema, brewed milk, single origin cortado, galão milk, white coffee sweet sit cortado. Chicory, seasonal as coffee barista mug, chicory as, dark, caffeine strong, mazagran brewed viennese black shop robusta, plunger pot blue mountain, cream lungo java cup froth. Caffeine trifecta, mazagran to go mazagran aged body beans, arabica, cup strong brewed wings irish frappuccino foam id cultivar aftertaste dark.</p>
+
+    <p>Crema mug, saucer grinder shop dark, ristretto id acerbic pumpkin spice doppio ut mug mocha ristretto as barista sugar froth instant. Cream mazagran a kopi-luwak, caramelization redeye affogato, half and half cultivar mug con panna robust arabica. Carajillo a shop breve aftertaste so cup filter organic, turkish single shot redeye affogato, variety, shop caramelization shop whipped mug carajillo. Cappuccino sit id mazagran café au lait froth, seasonal, white siphon, shop latte fair trade sugar dark cultivar extra. Affogato grounds decaffeinated cortado sugar organic, dripper extra eu, and, chicory viennese spoon percolator, at, ut java, flavour barista wings siphon latte.</p>
+
+    <p>Id, milk blue mountain, sit whipped, french press coffee irish as shop flavour aftertaste, percolator caramelization saucer grinder irish espresso extra extraction. Aftertaste, white, brewed skinny foam whipped coffee affogato coffee aroma, pumpkin spice robust java mug extra sweet viennese. Affogato cultivar est, breve macchiato, frappuccino foam cream con panna, in chicory instant coffee barista, rich roast mazagran bar and shop plunger pot carajillo. As flavour, caramelization chicory white, et cup, kopi-luwak macchiato, and at shop cortado flavour. That cultivar, chicory, instant foam brewed, latte skinny filter, single shot robust caramelization saucer filter.
+    </p>
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12">
+                <img src="{{ url('images/young-woman.jpg') }}" alt="Hannah Simpson smiling">
+                <h3>Hannah Simpson</h3>
+                <p>Co-founder/Product Manager</p>
             </div>
         </div>
     </div>
-
-</section>
-
-<section class="section-we-hire">
-    <div class="container">
-
-        <div class=" col-lg-offset-1 col-sm-7 col-lg-7">
-            <div class="hire-body">
-                <div class="title">
-                    want to be a part of us? <strong>&nbsp;we are hiring!</strong>
-                </div> 
-                <p>
-                    We have no specified needs, but present your ideas and yourself and we will contact you.
-                </p>
-            </div>
-        </div>
-        <div class="col-sm-5 col-lg-3 hire-button-holder">
-            <a href="#" class="hire-button md-button large">join our team</a>
-        </div>
-    </div>
-</section>
-
-<section class="section-about-us-more">
-    <div class="container">
-        <div class="col-xs-12 col-sm-4">
-            <div class="more-info-item">
-                <h3>who we are</h3>
-                <p>
-                    Curabitur vulputate libero quis molestie imperdiet. Nulla libero nibh, scelerisque rutrum urna a, viverra cursus velit. Donec sodales elementum mattis. Integer a ligula dolor. Nam ornare purus in ante auctor, vitae sollicitudin lacus rhoncus. 
-                </p>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-4">
-            <div class="more-info-item">
-                <h3>what we do</h3>
-                <p>
-                    Curabitur vulputate libero quis molestie imperdiet. Nulla libero nibh, scelerisque rutrum urna a, viverra cursus velit. Donec sodales elementum mattis. Integer a ligula dolor. Nam ornare purus in ante auctor, vitae sollicitudin lacus rhoncus. 
-                </p>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-            <div class="more-info-item">
-                <h3>our goal and idea</h3>
-                <p>
-                    Curabitur vulputate libero quis molestie imperdiet. Nulla libero nibh, scelerisque rutrum urna a, viverra cursus velit. Donec sodales elementum mattis. Integer a ligula dolor. Nam ornare purus in ante auctor, vitae sollicitudin lacus rhoncus. 
-                </p>
-            </div>
-        </div>
-
-
-
-    </div>
-</section>
-
-<section class="section-stats">
-    <div class="container">
-        <div class="col-xs-12 col-sm-3">
-            <div class="stat-item">
-                <span class="value">9431</span>
-                <span class="title">sold products</span>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-3">
-            <div class="stat-item">
-                <span class="value">347</span>
-                <span class="title">cups of coffee</span>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <div class="stat-item">
-                <span class="value">21</span>
-                <span class="title">product returns</span>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-3">
-            <div class="stat-item">
-                <span class="value">1094</span>
-                <span class="title">satisfied clients</span>
-            </div>
-        </div>
-    </div>
-</section>
+</div>
 
 @endsection
