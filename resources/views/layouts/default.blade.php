@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ url('/stylesheets/yamm.css') }}">
-<link rel="stylesheet" type="text/css" href="/cms/lemonstand.css">
 
 <link rel="stylesheet" href="{{ url('/stylesheets/main.css') }}">
 <link rel="stylesheet" href="{{ url('/stylesheets/checkout.css') }}">
@@ -25,7 +24,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="/cms/lemonstand.js"></script>
 
 <style>
 
@@ -424,7 +422,7 @@
 
 <script type="text/javascript">
 	$('#mc-form').ajaxChimp({
-	    url: ''
+	    url: 'https://neucome.us17.list-manage.com/subscribe/post?u=3837563b3d0cbd9806ea54fb3&amp;id=96542bad17'
 	});
 </script>
 

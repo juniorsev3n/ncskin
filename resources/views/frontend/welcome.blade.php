@@ -49,7 +49,10 @@
 			@foreach($products as $p)
 				<div class="col-md-3 col-xs-12 grid-item text-center">
 					<a href="/product/{{ $p->slug }}">
-						<img src="{{ $p->images }}" alt="">
+					@php
+					$images = json_decode($p->images,true);
+					@endphp
+						<img src="{{ $images[0] }}" alt="">
 						<h1>{{ $p->name }}</h1>
 						<p>{{ $p->price }}
 							@if($p->is_discount)
@@ -74,7 +77,10 @@
 		@foreach($products as $p)
        			<div class="col-md-3 col-xs-12 grid-item text-center">
 					<a href="/product/{{ $p->slug }}">
-						<img src="{{ $p->images }}" alt="">
+					@php
+					$images = json_decode($p->images,true);
+					@endphp
+						<img src="{{ $images[0] }}" alt="{{ $p->name }}">
 						<h1>{{ $p->name }}</h1>
 						<p>{{ $p->price }}
 							@if($p->is_discount)
