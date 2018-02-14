@@ -9,19 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="{{ url('images/favicon.png') }}"/>
 
-<link rel="shortcut icon" href="{{ url('images/favicon.png') }}" type="image/png">
-<link rel="icon" href="{{ url('images/favicon.png') }}" type="image/png">
+<link rel="shortcut icon" href="{{ url('/images/favicon.png') }}" type="image/png">
+<link rel="icon" href="{{ url('/images/favicon.png') }}" type="image/png">
 
 
 <link href='https://fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ url('stylesheets/yamm.css') }}">
+<link rel="stylesheet" href="{{ url('/stylesheets/yamm.css') }}">
 <link rel="stylesheet" type="text/css" href="/cms/lemonstand.css">
 
-<link rel="stylesheet" href="{{ url('stylesheets/main.css') }}">
-<link rel="stylesheet" href="{{ url('stylesheets/checkout.css') }}">
-<link rel="stylesheet" href="{{ url('stylesheets/custom.css') }}">
+<link rel="stylesheet" href="{{ url('/stylesheets/main.css') }}">
+<link rel="stylesheet" href="{{ url('/stylesheets/checkout.css') }}">
+<link rel="stylesheet" href="{{ url('/stylesheets/custom.css') }}">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -30,7 +30,7 @@
 <style>
 
 .home-feature {
- 	/*background: url({{ theme.homeHeaderImage.thumbnail('auto', 'auto') }} )no-repeat center right;*/
+ 	/*background: url()no-repeat center right;*/
  	-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -75,7 +75,7 @@
       <a class="navbar-brand" href="{{ url('/') }}">{{ config('custom.name') }}</a>
 
       <!-- logo in the header  -->
-      <a class="navbar-logo" href="{{ url('/') }}"><img src="{{ url('images/logo-nc.png') }}" alt="{{ config('custom.name') }}"/></a>
+      <a class="navbar-logo" href="{{ url('/') }}"><img src="{{ url('images/logo.png') }}" alt="{{ config('custom.name') }}" width="150" /></a>
 
     </div>
 
@@ -269,7 +269,7 @@
         <li class="dropdown yamm-fw login-drop" >
           <a href="#" class="search-botton dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Search</a>
           <ul class="dropdown-menu shop-drop">
-            <form class="search" method="get" action="{{ url('search')}">
+            <form class="search" method="get" action="{{ url('search') }}">
               <input class="search-box" type="text" name="query" value="{{ old('query') }}" placeholder="Search store&hellip;"/>
             </form>
           </ul>
@@ -333,12 +333,12 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container-fluid product-breadcrumb text-center">
+<!--<div class="container-fluid product-breadcrumb text-center">
 	<h4>
 		<a href="/">Home</a>
 		<span>/</span>
 	</h4>
-</div>
+</div>-->
 
     @yield('content')
 
@@ -409,7 +409,7 @@
 					<li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
 					<li><a href="#" target="_blank"><i class="fa fa-medium"></i></a></li>
 				</ul>
-				<p>Powered by <a href="https://lemonstand.com" target="_blank">LemonStand</a></p>
+				
 			</div>
 		</div>
 	</div>
@@ -424,7 +424,7 @@
 
 <script type="text/javascript">
 	$('#mc-form').ajaxChimp({
-	    url: '{{ theme.ajaxChimp }}'
+	    url: ''
 	});
 </script>
 

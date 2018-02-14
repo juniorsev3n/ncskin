@@ -17,7 +17,7 @@ Route::get('/', function () {
 											 ->orderBy('created_at', 'DESC')
 											 ->take(8)
 											 ->get();
-    return view('frontend.home', compact('products'));
+    return view('frontend.welcome', compact('products'));
 });
 
 	
