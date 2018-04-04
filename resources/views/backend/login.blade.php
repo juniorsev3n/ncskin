@@ -11,7 +11,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ url('css/font-awesome.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ url('css/AdminLTE.css') }}">
+  <link rel="stylesheet" href="{{ url('css/AdminLTE.min.css') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,7 +25,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ url('/')}}"><img src="{{ url('images/logo-nc.png') }}" width="250"></a>
+    <a href="{{ url('/')}}"><img src="{{ url('images/logo.png') }}" width="250"></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
