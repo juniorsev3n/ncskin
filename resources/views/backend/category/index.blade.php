@@ -32,7 +32,9 @@
             columns: [
             	{data: 'id', name: 'id'},
 	            {data: 'name', name: 'name'},
-	            {data: 'images', name: 'images'},
+	            {data: 'images', name: 'images', 'render': function(val, _, obj) {
+                    return '<img src="' + val + '" width="100px" height="120px">';
+                }},
 	            {data: 'description', name: 'description'},
 	            {data: 'action', name: 'action', orderable: false, searchable: false}
         	]

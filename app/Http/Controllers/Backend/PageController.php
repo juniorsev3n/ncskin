@@ -4,37 +4,36 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use Datatables;
+use App\Models\Page;
 
-class ProductController extends Controller
+class PageController extends Controller
 {
     public function index(){
-    	return view('backend.product.index');
+    	return view('backend.page.index');
     }
 
     public function getData(){
-    	$products = Product::select(['id','name','images','price','stock']);
-        return Datatables::eloquent($products)
-            ->addColumn('action', function ($product) {
+    	$page = Page::select(['id','name','images','price','stock']);
+        return Datatables::eloquent($page)
+            ->addColumn('action', function ($page) {
                 return '
-                <a href="javascript:view('.$product->id.')" class="btn btn-md btn-success"><i class="fa fa-view"></i> View</a>
-                <a href="javascript:edit('.$product->id.')" class="btn btn-md btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                <a href="javascript:delete('.$product->id.')" class="btn btn-md btn-danger"><i class="fa fa-delete"></i> Delete</a>';
+                <a href="javascript:view('.$page->id.')" class="btn btn-md btn-success"><i class="fa fa-view"></i> View</a>
+                <a href="javascript:edit('.$page->id.')" class="btn btn-md btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                <a href="javascript:delete('.$page->id.')" class="btn btn-md btn-danger"><i class="fa fa-delete"></i> Delete</a>';
             })
-            ->editColumn('images', function($product){
-            	$image = explode(",", $product->images);
+            ->editColumn('images', function($page){
+            	$image = explode(",", $page->images);
             	$image = str_replace(array('"','['), '', $image);
             	return url($image[0]);
             })
-            ->editColumn('price', function($product){
-                return number_format($product->price, 0, ',', '.');
+            ->editColumn('price', function($page){
+                return number_format($page->price, 0, ',', '.');
             })
             ->make();
     }
 
     public function getAdd(){
-        return view('backend.product.add');
+        return view('backend.page.add');
     }
 
     public function postAdd(Request $request){
@@ -51,28 +50,28 @@ class ProductController extends Controller
 
         try {
             DB::beginTransaction();
-            $product = new Product;
-            $product->name = $request->name;
-            $product->slug = str_slug($request->name);
-            $product->description = $request->description;
+            $page = new page;
+            $page->name = $request->name;
+            $page->slug = str_slug($request->name);
+            $page->description = $request->description;
             $pruduct->optional = json_encode($request->optional);
-            $product->images = json_encode($request->images);
-            $product->price = (int) $request->price;
+            $page->images = json_encode($request->images);
+            $page->price = (int) $request->price;
             if(isset($request->discount)){
-                $product->is_discount = 1;
-                $product->discount = $request->discount;
+                $page->is_discount = 1;
+                $page->discount = $request->discount;
             }
-            $product->is_homepage = $request->is_homepage;
-            $product->category_id = $request->category_id;
-            $product->brand_id = $request->brand_id;
-            $product->user_id = \Sentinel::getUser()->id;
-            $product->active = $request->active;
-            $product->stock = $request->stock;
-            $product->save();
+            $page->is_homepage = $request->is_homepage;
+            $page->category_id = $request->category_id;
+            $page->brand_id = $request->brand_id;
+            $page->user_id = \Sentinel::getUser()->id;
+            $page->active = $request->active;
+            $page->stock = $request->stock;
+            $page->save();
 
-            $messages = 'Add Product Success';
+            $messages = 'Add page Success';
         }catch(\Exception $e){
-            $message = 'Add Product Failed';
+            $message = 'Add page Failed';
         }
 
         return response()->json(['message' => $message]);
@@ -83,7 +82,7 @@ class ProductController extends Controller
             'image' => 'required|image']
             );
 
-        $pathTmp = public_path() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'products' . DIRECTORY_SEPARATOR;
+        $pathTmp = public_path() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'page' . DIRECTORY_SEPARATOR;
         $message = array();
         if(is_array($request->image)){
             foreach($request->image as $key => $img){              
@@ -112,21 +111,21 @@ class ProductController extends Controller
     public function getRemove($id){
         try{
             DB::beginTransaction();
-            $product = Product::findOrFail($id);
-            $product->delete();
-            $message = 'Product telah dihapus';
+            $page = page::findOrFail($id);
+            $page->delete();
+            $message = 'page telah dihapus';
         }catch(\Exception $e){
             DB::rollBack();
-            $message = 'Product gagal dihapus';
+            $message = 'page gagal dihapus';
         }
         return response()->json(['message' => $message]);
     }
 
     public function show($id){
-        $product = Product::find($id);
-        if($product){
-            return response()->json($product);
+        $page = page::find($id);
+        if($page){
+            return response()->json($page);
         }
-        return response()->json(['message' => 'Product tidak ditemukan']);
+        return response()->json(['message' => 'page tidak ditemukan']);
     }
 }

@@ -11,7 +11,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ url('css/font-awesome.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ url('css/AdminLTE.css') }}">
+  <link rel="stylesheet" href="{{ url('css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ url('css/_all-skins.min.css') }}">
@@ -19,7 +19,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -35,9 +35,9 @@
     <!-- Logo -->
     <a href="" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>E</b>CM</span>
+      <span class="logo-mini"><b>NEU</b>COME</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">Ecommerce</span>
+      <span class="logo-lg">NEUCOME</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -188,8 +188,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
 
 <script src="{{ url('js/dashboard2.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ url('js/demo.js') }}"></script>
+
 @yield('js')
 </body>
 </html>

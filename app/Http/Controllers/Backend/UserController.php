@@ -14,22 +14,21 @@ class UserController extends Controller
     }
 
     public function getData(){
-    	$users = User::selectRaw("id, concat(first_name,' ',last_name) as name, email, is_admin as status");
-        return Datatables::of($users)
-            ->addColumn('action', function ($users) {
+    	$user = User::select(['id', 'first_name', 'email', 'is_admin']);
+        return Datatables::of($user)
+            ->addColumn('action', function ($user) {
                 return '
-                <a href="javascript:view('.$users->id.')" class="btn btn-md btn-success"><i class="fa fa-view"></i> View</a>
-                <a href="javascript:edit('.$users->id.')" class="btn btn-md btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                <a href="javascript:delete('.$users->id.')" class="btn btn-md btn-danger"><i class="fa fa-delete"></i> Delete</a>';
+                <a href="javascript:view('.$user->id.')" class="btn btn-md btn-success"><i class="fa fa-view"></i> View</a>
+                <a href="javascript:edit('.$user->id.')" class="btn btn-md btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                <a href="javascript:delete('.$user->id.')" class="btn btn-md btn-danger"><i class="fa fa-delete"></i> Delete</a>';
             })
-            ->editColumn('status', function($users){
-            	if($users->status == 1){
+            ->editColumn('is_admin', function($user){
+            	if($user->is_admin == 1){
             		return 'admin';
             	}else{
             		return 'user';
             	}
             })
-            ->rawColumns(['action'])
             ->make(true);
     }
 }

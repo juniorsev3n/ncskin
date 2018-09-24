@@ -18,6 +18,14 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function (){
 		Route::get('product/remove/{id}', 'ProductController@getRemove');
 		Route::get('product/show/{id}', 'ProductController@show');
 
+		Route::get('page', 'PageController@index');
+		Route::get('page/data', 'PageController@getData');
+		Route::get('page/add', 'PageController@getAdd');
+		Route::post('page/add', 'PageController@postAdd');
+		Route::post('page/addImage', 'PageController@addImage');
+		Route::get('page/remove/{id}', 'PageController@getRemove');
+		Route::get('page/show/{id}', 'PageController@show');
+
 		
 
 		Route::get('category', 'CategoryController@index');

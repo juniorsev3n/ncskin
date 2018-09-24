@@ -1,23 +1,23 @@
 @extends('backend.master')
 
-@section('title', 'Product')
+@section('title', 'Content Management')
 @section('content')
 	<section class="content-header">
       <h1>
-        Product List
+        page List
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Product</li>
+        <li>page</li>
       </ol>
     </section>
 	<section class="content">
 		<div class="row">
 		<hr>
-		<a href="{{ url('admin/product/add') }}" class="btn btn-md btn-primary">Add Product</a>
+		<a href="{{ url('admin/page/add') }}" class="btn btn-md btn-primary">Add Page</a>
 		<hr>
 		<div class="col-md-12">
-		<table id="product-table" class="table table-striped table-bordered table-hover">
+		<table id="page-table" class="table table-striped table-bordered table-hover">
 		    <thead>
 		        <tr>
 		        	<th>#</th>
@@ -33,7 +33,7 @@
 		</div>
 	</section>
 
-<div class="modal fade" id="ProductViewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="pageViewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -47,7 +47,7 @@
                             <div class="box-footer text-black">
                                 <div class="modal-body">
                                 <div class="content-detail">
-                                <h3>Name Product : <span class="name-content"></span></h3>
+                                <h3>Name page : <span class="name-content"></span></h3>
                                     <span class="content-modal"></span>
                                 </div>
                                 </div>
@@ -63,7 +63,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="ProductEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="pageEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -77,7 +77,7 @@
                             <div class="box-footer text-black">
                                 <div class="modal-body">
                                 <div class="content-detail">
-                                <h3><Name Product : <input type="text" name="name" class="name-content"></h3>
+                                <h3><Name page : <input type="text" name="name" class="name-content"></h3>
                                     <span class="content-modal"></span>
                                 </div>
                                 </div>
@@ -99,10 +99,10 @@
 @section('js')
 <script type="text/javascript">
 	$(function() {
-        $('#product-table').DataTable({
+        $('#page-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ url('admin/product/data') }}',
+            ajax: '{{ url('admin/page/data') }}',
             columns: [
             	{data: 'id', name: 'id'},
 	            {data: 'name', name: 'name'},
@@ -122,12 +122,12 @@
         if (id) {
             $.ajax({
             type: 'GET',
-                    url: '{{ url('admin/product/show') }}'+'/'+id,
+                    url: '{{ url('admin/page/show') }}'+'/'+id,
                     dataType: 'json',
                     success: function(data) {
                     $('.loader-page').fadeOut();
                         if (data) {
-                            $('#ProductViewModal').modal({
+                            $('#pageViewModal').modal({
                                 backdrop: 'static',
                                 keyboard: false
                             });
@@ -147,12 +147,12 @@
         if (id) {
             $.ajax({
             type: 'GET',
-                    url: '{{ url('admin/product/show') }}'+'/'+id,
+                    url: '{{ url('admin/page/show') }}'+'/'+id,
                     dataType: 'json',
                     success: function(data) {
                     $('.loader-page').fadeOut();
                         if (data) {
-                            $('#ProductEditModal').modal({
+                            $('#pageEditModal').modal({
                                 backdrop: 'static',
                                 keyboard: false
                             });

@@ -27,9 +27,8 @@ class CategoryController extends Controller
             ->editColumn('images', function($categories){
             	$image = explode(",", $categories->images);
             	$image = str_replace(array('"','['), '', $image);
-            	return '<img src="'.url($image[0]).'" width="75" />';
+            	return url($image[0]);
             })
-            ->rawColumns(['images', 'action'])
             ->make(true);
     }
 }
